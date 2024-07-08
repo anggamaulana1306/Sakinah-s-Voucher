@@ -1,0 +1,3287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redeem Sakinah's Birthday Voucher</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat+Brush&family=Cherry+Swash:wght@400;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap">
+<style>
+    html, body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEin2ahAr7VyyFAzr4wLsRUro5O6Fkq_L37zupr2TjnM7ffPTo_P1_pekZ8YUglgW0EQIGMyAfdDDnMFy3gfq7_qcZ9ZAdhq7JblJhtPCbUycFb-XR44ybcewe3lfNAhkTn8e6yiSFyli8G55IJAgbwfbAWsVygSzop3BCCoYtcXpqxnsd6vFTVmEcTHWz8/s1366/birthday%20sakinah%20mutiah.png'); /* Ganti URL_GAMBAR_ANDA dengan URL gambar yang Anda desain */
+        background-size: cover;
+        background-position: center;
+        z-index: -1; /* Pastikan background berada di belakang konten */
+    }
+
+    .container-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        overflow-y: auto; /* Izinkan scroll vertikal pada kontainer */
+    }
+
+    .success-message-cancer09 {
+        margin: 15px 0;
+        margin-left: 20px;
+        margin-top: 0px;
+        font-family: Calibri;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'Chewy';
+        color: #F381A0;
+    }
+    
+    .success-message-gemini13 {
+        margin: 15px 0;
+        margin-left: 20px;
+        margin-top: 0px;
+        font-family: 'Fredoka';
+        font-weight: bold;
+        font-size: 20px;
+        color: #e0218a;
+    }
+
+    .container {
+        background-color: #F18DBC;
+        padding: 15px;
+        padding-top: 0px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        animation: fadeIn 0.5s ease;
+        max-width: 410px;
+        width: 90%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container.show {
+        margin-top: 20px;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    h2 {
+        color: #fff;
+        font-size: 33px;
+        font-family: 'Dancing Script';
+        margin-bottom: -5px;
+    }
+
+    p {
+        margin-bottom: 0px;
+        color: #fff;
+    }
+
+    .input-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+    }
+
+    #voucher-input {
+        padding: 10px;
+        font-size: 16px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        width: 70%;
+        transition: border-color 0.3s ease;
+        margin-right: 10px;
+    }
+
+    #voucher-input:focus {
+        outline: none;
+        border-color: #ec5353;
+    }
+
+    .valid-feedback {
+        color: #4CAF50;
+        font-size: 14px;
+        display: none;
+    }
+
+    .invalid-feedback {
+        color: #e00000;
+        font-size: 14px;
+        display: none;
+    }
+
+    .button-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    #submit-button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #E0218A;
+        color: rgb(255, 255, 255);
+        border: none;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    #submit-button:hover {
+        background-color: #c41c78;
+    }
+
+    .loading-spinner {
+        display: none; /* Sembunyikan spinner secara default */
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        margin-left: 5px;
+        animation: spin 1s ease-in-out infinite;
+    }
+    @keyframes spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .card {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        text-align: center;
+        margin-top: 20px;
+        display: none;
+    }
+
+    .card.show {
+        display: block;
+    }
+/* General coupon styles */
+.coupon {
+    width: 400px;
+    height: 200px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: auto;
+    filter: drop-shadow(0 3px 5px rgba(46, 46, 46, 0.5));
+    display: flex;
+    align-items: stretch;
+    position: relative;
+    text-transform: uppercase;
+}
+
+.coupon::before,
+.coupon::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    z-index: -1;
+}
+
+.coupon > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    width: 20%;
+    border-left: 2px dashed rgba(0, 0, 0, 0.13);
+    color: #fff;
+}
+
+.right div {
+    transform: rotate(-90deg);
+    white-space: nowrap;
+    font-weight: bold;
+    margin-left: -20%;
+}
+
+.center {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.left {
+    width: 120px;
+    background-image: radial-gradient(
+      circle at 0% 50%,
+      transparent 25px,
+      #fff 26px
+    );
+}
+
+/* Styles for CANCER09 voucher */
+.coupon-cancer09::before {
+    left: 0;
+    background-image: radial-gradient(
+        circle at 0 50%,
+        transparent 25px,
+        #F381A0 26px
+    );
+}
+
+.coupon-cancer09::after {
+    right: 0;
+    background-image: radial-gradient(
+        circle at 100% 50%,
+        transparent 25px,
+        #F381A0 26px
+    );
+}
+
+/* Styles for GEMINI13 voucher */
+.coupon-gemini13::before {
+    left: 0;
+    background-image: radial-gradient(
+        circle at 0 50%,
+        transparent 25px,
+        #e0218a 26px
+    );
+}
+
+.coupon-gemini13::after {
+    right: 0;
+    background-image: radial-gradient(
+        circle at 100% 50%,
+        transparent 25px,
+        #e0218a 26px
+    );
+}
+    /* Specific styles for CANCER09 */
+#voucher-image-coupon-cancer09 .left img {
+    max-width: 70%;
+    margin-left: 12%;
+    height: auto;
+}
+
+#voucher-image-coupon-cancer09 .center h2 {
+    background: #fff;
+    color: #F381A0;
+    padding: 5px 10px;
+    margin: 0;
+    font-size: 1.90rem;
+    font-family: 'Caveat Brush';
+    white-space: nowrap;
+}
+
+#voucher-image-coupon-cancer09 .center h3 {
+    font-size: 1.30rem;
+    font-family: 'Caveat Brush';
+    color: white;
+    margin: 6px 0 0 0;
+}
+
+#voucher-image-coupon-cancer09 .center small {
+    font-size: 0.60rem;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 2px;
+    margin: 2px 0 0 0;
+}
+
+/* Specific styles for GEMINI13 */
+#voucher-image-coupon-gemini13 .left img {
+    max-width: 100%;
+    margin-left: 20%;
+    height: auto;
+}
+
+#voucher-image-coupon-gemini13 .center {
+    position: relative;  /* Tambahkan properti ini */
+}
+
+#voucher-image-coupon-gemini13 .center h2 {
+    position: absolute;  /* Ubah properti ini */
+    top: 15%;  /* Atur agar berada di atas */
+    left: 50%;  /* Tengah secara horizontal */
+    transform: translateX(-50%);  /* Koreksi agar tepat di tengah */
+    background: #ffffff;
+    color: #e0218a;
+    padding: 5px 10px;  /* Sesuaikan padding sesuai kebutuhan */
+    font-size: 1.80rem;
+    font-family: 'Fredoka';
+    white-space: nowrap;
+    box-sizing: border-box;  /* Pastikan padding termasuk dalam total lebar dan tinggi elemen */
+    display: inline-block;  /* Atur display ke inline-block */
+}
+
+#voucher-image-coupon-gemini13 .center h3 {
+    font-size: 1.2rem;
+    font-family: 'Dancing Script';
+    color: white;
+    margin: 45px 0 0 0;  /* Gunakan margin negatif untuk mendekatkan dengan h2 */
+    display: block;  /* Pastikan h3 ditampilkan sebagai block */
+}
+
+#voucher-image-coupon-gemini13 .center small {
+    font-size: 0.60rem;
+    color: white;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 5px 0 0 0;  /* Sesuaikan margin untuk mengurangi jarak antara h3 dan small */
+    display: block;  /* Pastikan small ditampilkan sebagai block */
+}
+
+    @media screen and (max-width: 500px) {
+        .coupon {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        .right div {
+            transform: rotate(0deg);
+        }
+
+        .left div {
+            transform: rotate(0deg);
+        }
+    }
+
+    #voucher-image {
+        max-width: 100%;
+        height: auto;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .voucher-message {
+        margin-top: 10px;
+        font-style: italic;
+        color: #666;
+        display: none;
+    }
+
+    .error-message {
+        color: #e00000;
+        font-weight: bold;
+        display: none;
+        margin-top: 10px;
+    }
+
+    .outlet-slider {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+        overflow: hidden;
+        display: none;
+    }
+
+    .outlet-container {
+        display: flex;
+        transition: transform 0.5s ease;
+        position: relative;
+        width: 100%;
+    }
+
+    .outlet-card {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        width: 100%;
+        margin: 10px;
+        text-align: center;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    #outlets-title {
+        font-size: large;
+        color: #F381A0;
+        font-family: 'Chewy';
+        text-align: center;
+        margin: 10px 0;
+        margin-top: 0px;
+    }
+
+    .outlet-card.active {
+        opacity: 1;
+        position: relative;
+        transform: translateX(0);
+    }
+
+    .outlet-card.inactive-left {
+        transform: translateX(-100%);
+    }
+
+    .outlet-card.inactive-right {
+        transform: translateX(100%);
+    }
+
+    .outlet-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .outlet-card img {
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+    .outlet-card h3 {
+        color: #F381A0;
+        font-size: 20px;
+        font-family: 'Chewy';
+        margin: 10px 0;
+    }
+
+    .outlet-card p {
+        color: #666;
+        font-size: 14px;
+    }
+
+    .slider-nav {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .slider-nav.prev {
+        left: 0;
+    }
+
+    .slider-nav.next {
+        right: 0;
+    }
+
+    .footer {
+        margin-top: 15px;
+        font-size: 12px;
+        color: #fff;
+    }
+
+    @media (max-width: 600px) {
+        .outlet-card {
+            width: 80%;
+        }
+
+        #voucher-input {
+            width: 100%;
+            margin-right: 0;
+        }
+    }
+
+    /* Popup styles */
+    .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        overflow-x: hidden; /* Prevent horizontal scrollbar */
+    }
+
+    .terms-text {
+        color: #000000; /* Set your desired color */
+    }
+
+    .popup-container {
+        padding: 30px;
+        padding-bottom: 15px;
+        border-radius: 10px;
+        max-width: 340px;
+        width: 90%;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        position: relative;
+        animation: fadeInPopup 0.3s ease;
+    }
+
+    @keyframes fadeInPopup {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .popup-close {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background: none;
+        border: none;
+        font-size: 20px;
+        cursor: pointer;
+        color: #ffffff;
+    }
+
+    .popup-close:hover {
+        color: #000;
+    }
+
+    .popup-content {
+        max-height: 500px;
+        overflow-y: auto;
+        overflow-x: hidden; /* Hide horizontal scrollbar */
+    }
+
+    .popup-content h3 {
+        margin-top: 0;
+        color: #ffffff;
+    }
+
+    /* Common voucher styles */
+.voucher::before, .voucher::after {
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.voucher::before {
+    bottom: 63px;
+    left: -15px;
+}
+
+.voucher::after {
+    bottom: 63px;
+    right: -15px;
+}
+
+/* Specific styles for CANCER09 */
+.voucher-cancer09 {
+    width: 250px;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 1%;
+}
+
+.voucher-cancer09 .top-container {
+    flex: 1;
+}
+
+.cancer09-bg {
+    background-color: #F381A0; /* Warna background untuk voucher CANCER09 */
+}
+
+.voucher-cancer09::before, .voucher-cancer09::after {
+    background: #F381A0; /* Custom background color for CANCER09 */
+}
+
+.voucher-cancer09 .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.voucher-cancer09 .logo img {
+    width: 90px;
+    margin-bottom: -10%;
+}
+
+.voucher-cancer09 .header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 32px;
+    flex-grow: 1;
+    padding-top: 15px;
+}
+
+.voucher-cancer09 .header-text h1 {
+    margin: 0;
+    font-size: 22.5px;
+    font-family: 'Caveat Brush';
+    color: #F381A0;
+}
+
+.voucher-cancer09 .value {
+    font-size: 60px;
+    font-family: 'Caveat Brush';
+    font-weight: bold;
+    color: #F381A0;
+    margin: 0;
+    align-self: flex-end;
+}
+
+.voucher-cancer09 .details {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #000000;
+    margin: 20px 0;
+    #birthday-message {color: #000 !important;}
+}
+
+.voucher-cancer09 .details ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.voucher-cancer09 .details ul li {
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.voucher-cancer09 .dashed-line {
+    border-top: 1px dashed #000000;
+    margin: 5px 0;
+    position: relative;
+}
+
+.voucher-cancer09 .bottom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.voucher-cancer09 .barcode {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.voucher-cancer09 .barcode img {
+    width: 100%;
+    margin: 0;
+}
+
+.voucher-cancer09 .barcode-number {
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+}
+
+.voucher-cancer09 .footer-Voucher {
+    font-size: 12px;
+    color: #999;
+}
+
+.voucher-cancer09 .validity {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin-bottom: -14%;
+    margin-top: 9%;
+    padding-bottom: 0;
+}
+
+/* Specific styles for GEMINI13 */
+.voucher-gemini13 {
+    width: 250px;
+    padding: 40px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 0 0px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 1%;
+}
+
+.voucher-gemini13 .top-container {
+    flex: 1;
+}
+
+.gemini13-bg {
+    background-color: #e0218a; /* Warna background untuk voucher GEMINI13 */
+}
+
+.voucher-gemini13::before, .voucher-gemini13::after {
+    background: #e0218a; /* Custom background color for GEMINI13 */
+}
+
+.voucher-gemini13::before, .voucher-gemini13::after {
+    background: #e0218a; /* Custom background color for GEMINI13 */
+}
+
+.voucher-gemini13 .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.voucher-gemini13 .logo img {
+    width: 150px;
+    margin-left: -15%;
+    margin-bottom: -10%;
+}
+
+.voucher-gemini13 .header-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: -26px;
+    flex-grow: 1;
+    padding-top: 15px;
+}
+
+.voucher-gemini13 .header-text h1 {
+    margin: 0;
+    font-size: 28px;
+    font-family: 'Dancing Script';
+    color: #e0218a;
+}
+
+.voucher-gemini13 .value {
+    font-size: 50px;
+    font-family: 'Fredoka';
+    font-weight: bold;
+    color: #e0218a;
+    align-self: flex-end;
+}
+
+.voucher-gemini13 .details {
+    text-align: left;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin: 20px 0;
+    #birthday-message {color: #000000 !important;}
+}
+
+.voucher-gemini13 .details ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+.voucher-gemini13 .details ul li {
+    margin-bottom: 10px;
+    color: #000000;
+}
+
+.voucher-gemini13 .dashed-line {
+    border-top: 1px dashed #000000;
+    margin: 5px 0;
+    position: relative;
+}
+
+.voucher-gemini13 .bottom-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.voucher-gemini13 .barcode {
+    position: relative;
+    width: 100%;
+    text-align: left;
+}
+
+.voucher-gemini13 .barcode img {
+    width: 100%;
+    margin: 0;
+}
+
+.voucher-gemini13 .barcode-number {
+    font-size: 12px;
+    color: #000000;
+    position: absolute;
+    bottom: -6px;
+    left: 0;
+}
+
+.voucher-gemini13 .footer-Voucher {
+    font-size: 12px;
+    color: #999;
+}
+
+.voucher-gemini13 .validity {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin-bottom: -14%;
+    margin-top: 9%;
+    padding-bottom: 0;
+}
+
+/* General styles for buttons */
+.download-button {
+    padding: 7px 7px; /* Mengatur padding lebih kecil */
+    font-size: 12px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    margin-left: 113px;
+    display: inline-block;
+    text-align: center;
+    white-space: nowrap;
+    width: fit-content; /* Mengatur lebar sesuai dengan teks */
+    box-sizing: border-box; /* Menjaga padding dan border dalam lebar total */
+}
+
+.download-button-cancer09 {
+    background-color: #ffffff; /* Specific color for CANCER09 */
+    color: #000000;
+}
+
+.download-button-cancer09:hover {
+    background-color: #ececec; /* Darker shade for hover effect */
+}
+
+.download-button-gemini13 {
+    background-color: #ff7ec5; /* Specific color for GEMINI13 */
+    color: #ffffff;
+}
+
+.download-button-gemini13:hover {
+    background-color: #c81c76; /* Darker shade for hover effect */
+}
+
+.tnc-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 0px;
+}
+
+.tnc-button-cancer09 {
+    background-color: #F381A0; /* Specific color for CANCER09 */
+}
+
+.tnc-button-cancer09:hover {
+    background-color: #de7490; /* Darker shade for hover effect */
+}
+
+.tnc-button-gemini13 {
+    background-color: #e0218a; /* Specific color for GEMINI13 */
+}
+
+.tnc-button-gemini13:hover {
+    background-color: #c81c76; /* Darker shade for hover effect */
+}
+
+/* Existing styles for GEMINI13 container */
+#maps-container {
+    background-color: #fff;
+    padding: 15px;
+    max-width: 370px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    text-align: center;
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Ensure the container is relatively positioned */
+}
+
+#maps-iframe {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    margin-top: 10px;
+}
+
+/* GEMINI13 Slider container google maps & Tiktok */
+#gemini13-slider {
+    position: relative;
+    width: 100%;
+    padding-top: 5px;
+    max-width: 400px;
+    overflow: hidden;
+    margin: auto;
+    text-align: center;
+}
+
+#gemini13-slider .slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+}
+
+#gemini13-slider .slide.inactive-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+#gemini13-slider .slide.inactive-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+#gemini13-slider .slide.active {
+    transform: translateX(0);
+    opacity: 1;
+    position: relative;
+}
+
+#gemini13-prev-slide {
+    left: -10px; /* Positioned outside the slider */
+}
+
+#gemini13-next-slide {
+    right: -10px; /* Positioned outside the slider */
+}
+
+@media (max-width: 500px) {
+    .slide {
+        display: block;
+        position: relative;
+        width: 100%;
+    }
+
+    .tiktok-embed {
+        width: 100% !important;
+        height: auto !important;
+    }
+}
+
+/* CSS khusus untuk slide Google Maps */
+.slide-google-maps h3 {
+    color: #e0218a;
+    font-size: 18px;
+    font-family: 'Fredoka';
+    margin-bottom: 0px;
+    margin-top: -5px;
+}
+
+/* CSS khusus untuk slide TikTok */
+.slide-tiktok h3 {
+    color: #e0218a;
+    font-size: 18px;
+    font-family: 'Fredoka';
+    margin-bottom: -10px;
+    margin-top: -5px;
+}
+
+.slide-tiktok blockquote {
+    max-width: 100%;
+}
+
+/* Ice Cream Menu Button Styles */
+.menu-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    background-color: #F381A0; /* Sama dengan button CANCER09 */
+}
+
+.menu-button:hover {
+    background-color: #de7490; /* Warna hover button CANCER09 */
+}
+
+/* Ice Cream Menu Popup Container Styles */
+.popup-ice-cream-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeInOverlay 0.5s ease; /* Animasi hanya untuk overlay */
+}
+
+.popup-ice-cream-content {
+    width: 90%;
+    max-width: 500px;
+    max-height: 48.54%; /* Set a maximum height */
+    background-color: #F381A0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative; /* Pastikan konten popup diatur relative */
+    animation: smoothFadeIn 0.7s ease;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.popup-ice-cream-content-special {
+    width: 90%;
+    max-width: 350px;
+    max-height: 48.55%; /* Set a maximum height */
+    background-color: #F381A0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    animation: smoothFadeIn 0.7s ease;
+    overflow-y: auto; /* Enable vertical scrolling */
+    margin-top: 30px; /* Tambahkan margin atas */
+}
+
+@keyframes smoothFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInOverlay {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.popup-ice-cream-header {
+    font-size: 30px;
+    color: #ffffff;
+    font-family: 'Chewy';
+    margin-bottom: 15px;
+    margin-top: -50px;
+}
+
+.popup-ice-cream-section-title {
+    font-size: 20px;
+    color: #ffffff;
+    font-family: 'Chewy';
+    margin-top: 26px;
+    text-align: left;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px; /* Adjust the gap as needed */
+}
+
+/* Styling for 2x2 product grid */
+.product-grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px; /* Adjust the gap as needed */
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Make items stretch to align */
+    text-align: center;
+    background-color: #fff;
+    padding: 15px; /* Adjust padding for a more compact look */
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.product-item:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.product-item img {
+    width: 100px; /* Adjust the image size as needed */
+    height: auto;
+    margin-bottom: 10px;
+    align-self: center; /* Center the image */
+}
+
+.product-item h3 {
+    font-size: 12.5px; /* Adjust the font size */
+    margin: 10px 0;
+    font-weight: bold; /* Make the product name bold */
+    height: 40px; /* Ensure consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.price {
+    font-weight: bold;
+    color: black;
+    font-size: 16px; /* Adjust the font size */
+    height: 40px; /* Ensure consistent height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-to-cart {
+    margin-top: auto; /* Push button to the bottom */
+    padding: 10px 15px;
+    font-size: 14px; /* Adjust the font size */
+    background-color: #e0218a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #ca1d7c;
+}
+
+.popup-ice-cream-close-button {
+    position: absolute;
+    top: 10px; /* Sesuaikan jarak dari atas */
+    right: 10px; /* Sesuaikan jarak dari kanan */
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333; /* Warna tombol close */
+}
+
+.popup-ice-cream-close-button:hover {
+    color: #000; /* Warna tombol close saat hover */
+}
+
+.icon-cart {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.icon-cart .cart-line-1,
+.icon-cart .cart-line-2,
+.icon-cart .cart-line-3,
+.icon-cart .cart-wheel {
+    background-color: #ffffff; /* Warna putih */
+}
+
+.icon-cart .cart-line-1 {
+    width: 15%;
+    height: 7%;
+    position: absolute;
+    left: 8%;
+    top: 25%;
+    transform: rotate(5deg);
+    border-bottom-left-radius: 35%;
+}
+
+.icon-cart .cart-line-2 {
+    width: 35%;
+    height: 7%;
+    position: absolute;
+    left: 6%;
+    top: 40%;
+    transform: rotate(80deg);
+}
+
+.icon-cart .cart-line-2:before {
+    content: "";
+    width: 120%;
+    height: 100%;
+    position: absolute;
+    left: 45%;
+    top: -280%;
+    transform: rotate(-80deg);
+    background-color: inherit;
+}
+
+.icon-cart .cart-line-2:after {
+    content: "";
+    width: 70%;
+    height: 100%;
+    position: absolute;
+    left: 59%;
+    top: -670%;
+    background-color: inherit;
+    transform: rotate(40deg);
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 25%;
+}
+
+.icon-cart .cart-line-3 {
+    width: 30%;
+    height: 7%;
+    position: absolute;
+    left: 33%;
+    top: 45%;
+}
+
+.icon-cart .cart-line-3:after {
+    content: "";
+    width: 124%;
+    height: 100%;
+    position: absolute;
+    top: -150%;
+    left: -5%;
+    background-color: inherit;
+}
+
+.icon-cart .cart-wheel {
+    width: 12%;
+    height: 12%;
+    background-color: #ffffff;
+    border-radius: 100%;
+    position: absolute;
+    left: 28%;
+    bottom: 20%;
+}
+
+.icon-cart .cart-wheel:after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+    border-radius: 100%;
+    position: absolute;
+    left: 200%;
+    bottom: 0;
+}
+
+.cart-count {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.quantity-controls button {
+    background-color: #e0218a;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.quantity-controls button:hover {
+    background-color: #ca1d7c;
+}
+
+.product-quantity {
+    margin: 0 10px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* Styles for Total Price and Notification */
+.total-price-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.total-price-container span {
+    font-size: 12px;
+    color: #ffffff;
+    margin-top: 25px;
+    font-weight: bold;
+}
+
+/* Notification container with popup animation */
+.price-limit-notification {
+    font-size: 15px;
+    margin-top: 5px;
+    display: none;
+    color: red;
+    font-weight: bold;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid red;
+    padding: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Adjusted to be above the overlay */
+    animation: popup 0.3s ease-out;
+    pointer-events: auto;
+}
+
+.price-limit-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 1000; /* Below the notification */
+}
+
+@keyframes popup {
+    0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 0;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+}
+
+.price-limit-notification .close-button {
+    display: inline-block;
+    margin-top: 5px;
+    padding: 4px 4px;
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.cart {
+    max-width: 465px;
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 50%;
+    right: -600px;
+    transform: translateY(-50%);
+    transition: right 0.3s ease-in-out;
+    z-index: 1002;
+}
+.cart.active {
+    right: 10px; /* Move onscreen */
+}
+.cart-header {
+    font-size: 24px;
+    font-family: 'chewy';
+    color: #F381A0;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Add the following CSS to enable vertical scrollbar */
+.cart-items {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.cart-item img.product-image {
+    width: 75px;
+    height: 75px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 2px solid #F381A0;
+}
+.cart-item img.trash-icon {
+    width: 20px;
+    height: 20px;
+}
+.cart-item-details {
+    flex: 2;
+    margin-left: 10px;
+    font-size: 15px;
+}
+.cart-item-details span {
+    display: block;
+}
+.cart-item-actions {
+    display: flex;
+    align-items: center;
+    flex: 3.5;
+    justify-content: space-between;
+}
+.cart-item-actions span {
+    margin: 0 5px;
+}
+.quantity-control {
+    display: flex;
+    align-items: center;
+    margin-left: 25px;
+}
+.quantity-control button {
+    background-color: #e0218a;
+    border: none;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+.cart-item-actions .remove-button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin-left: 3px;
+    cursor: pointer;
+}
+.cart-item-actions .remove-button img {
+    width: 20px;
+    height: 20px;
+}
+.cart-summary {
+    margin-top: 10px;
+    padding-bottom: 20px;
+    font-size: 13px;
+}
+.cart-summary div {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.cart-summary input {
+    width: calc(100% - 80px);
+    padding: 10px;
+    border: 1px solid #F381A0;
+    border-radius: 5px;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+.cart-summary input:focus {
+    border-color: #e0218a;
+    box-shadow: 0 0 5px rgb(224, 33, 138);
+    outline: none;
+}
+.cart-summary button {
+    background-color: #e0218a;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.cart-summary button:hover {
+    background-color: #c71e7b;
+}
+.cart-summary .subtotal {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+.cart-summary .discount-info,
+.cart-summary .discount {
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.6);
+}
+.cart-summary-total {
+    font-size: 20px;
+    font-weight: bold;
+}
+.cart-summary-divider {
+    border-top: 1px dashed #e0e0e0;
+    margin: 10px 0;
+}
+.cart-actions .confirm-button {
+    background-color: #F381A0;
+    border: none;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.cart-actions .confirm-button:hover {
+    background-color: #d3708a;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.cart-actions .continue-button {
+    background-color: #fff;
+    border: none;
+    color: #000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+.cart-actions .continue-button:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2), 0 3px 6px rgba(0, 0, 0, 0.2);
+}
+.disable-all {
+    pointer-events: none;
+}
+.disable-all .cart {
+    pointer-events: auto;
+}
+
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    display: none;
+}
+
+.cart-price-limit-notification {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 15px;
+    color: red;
+    font-weight: bold;
+    background-color: white;
+    border: 2px solid red;
+    padding: 10px 15px; /* Update padding to make it horizontal */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    pointer-events: auto;
+    margin: 10px 0; /* Optional: Add margin to separate it from other elements */
+    z-index: 1002;
+    animation: popup 0.3s ease-out;
+}
+
+.cart-price-limit-notification .close-button {
+    display: inline-block;
+    margin-left: 5px; /* Update margin to align button properly */
+    padding: 4px 8px; /* Adjust padding for better appearance */
+    background-color: red;
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+.cart-actions button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.cart-overlay-internal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1001; /* Adjusted to be above the cart content */
+    display: none;
+}
+
+@keyframes fadeOutScale {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+.fade-out-scale {
+    animation: fadeOutScale 0.3s forwards;
+}
+
+</style>
+</head>
+<body>
+    <div class="container-wrapper">
+        <div class="container">
+            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdY1Xas2yQw8c1xGFyB9Er7Y-Zm4GQBLJjwjZ9rtTku-kU-VXKfp6-qUQMeQL15RughWIijiws_uaer2i3Wo4pu2bXiLTCuepO81iFghMfsMD88vBVx5ufviZLMVM-RzC0Aoar3yhNqGjyV7_yrUqyEA3TLYUbMQzct67M60AvFEInxOntXeb8A43Xg10/s309/free%20voucher%20(1).png" alt="Voucher Header" style="width: 70%; border-radius: 10px; margin-bottom: -20px">
+            <h2>Sakinah's Birthday Voucher</h2>
+            <p>Masukkan kode dari birthday treasure dibawah</p>
+            <div class="input-container">
+                <input type="text" id="voucher-input" placeholder="Contoh: anggaganteng" autocomplete="off">
+                <div class="valid-feedback" id="valid-feedback">Kode benar</div>
+                <div class="invalid-feedback" id="invalid-feedback">Kode salah</div>
+            </div>
+            <div class="button-container">
+                <button id="submit-button">Redeem Now</button>
+                <div class="loading-spinner" id="loading-spinner"></div>
+            </div>
+            <div class="card" id="voucher-result">
+                <p class="success-message hidden" id="success-message"></p>
+                <div class="coupon" id="voucher-image-coupon-cancer09" style="display: none;">
+                    <div class="left">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh79YYhDUa2lB0WbTP5YM7noSxsn5cb81Gs1-zRi-lzyBeCuuitAP5UE0yfNnPgyz_AN3to_I8uOuGIObViPk1z6arHSW3jHUS2jY6che8SVCnJ9d4S6G08TcxyXlNcoMsKkXICY0u5y_UaXIdwKj2eXMGnJDxZ5-sPGOK0xNVlexG7xT9T1B3VLMS-pA8/s269/eskrim%20logo%20(1).png" alt="Ice Cream Logo" id="ice-cream-logo">
+                    </div>
+                    <div class="center">
+                        <div>
+                            <h2>100% OFF</h2>
+                            <h3>Ice Cream Party</h3>
+                            <small>Berlaku 9-31 Juli 2024</small>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div>S&K Berlaku</div>
+                    </div>
+                </div>
+                
+                <div class="coupon" id="voucher-image-coupon-gemini13" style="display: none;">
+                    <div class="left">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5QkWWor7nZYvtsXhmn6DV9n_paDiOYPaTqA9PqZKt9s4YNoYG5jjJAfBhZHnD0rCtO4z3XE_Q6fCQpnF5SRS34zIibqTPSdXbIH6jL9Zc20VR0Jju8sspqBx7i5YRVCMhO-f6esBwt6u1o2iEMbncx8hXHGFLWZlOzSBgePKmEfKmLRvlCZX2mvdgRHY/s1024/Barbie-Symbole.png" alt="Gift Logo" id="gift-logo">
+                    </div>
+                    <div class="center">
+                        <div>
+                            <h2>Free</h2>
+                            <h3>Mystery Gift</h3>
+                            <small>Berlaku Hari-H</small>
+                        </div>
+                    </div>
+                    <div class="right">
+                        <div>S&K Berlaku</div>
+                    </div>
+                </div>
+                <img id="voucher-image" src="" alt="Voucher Image" style="display: none;">
+                <br>
+                <button id="view-tnc-button"></button>
+                <p class="voucher-message" id="voucher-message"></p>
+                <div id="maps-container" style="display: none; text-align: center;">
+                    <div id="gemini13-slider">
+                        <!-- Slide untuk Google Maps -->
+                        <div class="slide active slide-google-maps">
+                            <h3>LOKASI PERTEMUAN</h3>
+                            <iframe id="maps-iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.5623526136665!2d106.79392987503738!3d-6.18927039379829!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f7473fb7117d%3A0x4901356a543de45c!2sPlaza%20Slipi%20Jaya!5e0!3m2!1sen!2sid!4v1718824870473!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <!-- Slide untuk TikTok -->
+                        <div class="slide slide-tiktok">
+                            <h3>SUASANA TEMPATNYA</h3>
+                            <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@alvinmirzaa/video/7309719389467643141" data-video-id="7309719389467643141" style="max-width: 360px; height: 758px;">
+                                <section> </section>
+                            </blockquote>
+                        </div>
+                    </div>
+                    <button class="slider-nav prev" id="gemini13-prev-slide">&#10094;</button>
+                    <button class="slider-nav next" id="gemini13-next-slide">&#10095;</button>
+                </div>
+            <div class="outlet-slider" id="outlet-slider">
+                <button class="slider-nav prev" id="prev-slide" style="display: none;">&#10094;</button>
+                <div class="outlet-container" id="outlet-container">
+                    <!-- Outlet Indomaret -->
+                    <div class="outlet-card active">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://img2.wikia.nocookie.net/__cb20120826082724/logopedia/images/archive/a/a4/20130720032628!Indomaret_Baru.png" alt="Outlet 1">
+                        <h3>Indomaret</h3>
+                        <p>Tomang Raya No.41, RT.12/RW.5, Tomang, Kec. Grogol petamburan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11440</p>
+                        <button class="menu-button" data-outlet="Indomaret">Lihat Menu Eskimnya</button>
+                    </div>
+                    <!-- Outlet Teguk -->
+                    <div class="outlet-card inactive-right">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://Teguk.co.id/wp-content/uploads/2024/05/cropped-Logo-Baru-2048x1173.png" alt="Outlet 2" width="280px">
+                        <h3>Teguk</h3>
+                        <p>Jl. Sawo Manila 1-46, Pasar Minggu, Jakarta</p>
+                        <button class="menu-button" data-outlet="Teguk">Lihat Menu Eskimnya</button>
+                    </div>
+                    <!-- Outlet Sour Sally -->
+                    <div class="outlet-card inactive-right">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://farm5.staticflickr.com/4331/36206775814_1b63c5424f_o.jpg" alt="Outlet 3">
+                        <h3>Sour Sally</h3>
+                        <p>Jln. Letjen S. Parman 11470 Jakarta</p>
+                        <button class="menu-button" data-outlet="Sour Sally">Lihat Menu Eskimnya</button>
+                    </div>
+                    <!-- Outlet Mixue -->
+                    <div class="outlet-card inactive-right">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://blue.kumparan.com/image/upload/fl_progressive,fl_lossy,c_fill,q_auto:best,w_640/v1634025439/01gpmh86qnzfncbrr48jczp2hb.png" alt="Outlet 4">
+                        <h3>Mixue</h3>
+                        <p>1, Jl. K.S. Tubun No.18, RW.2, Kota Bambu Utara, Kec. Palmerah, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11420, Indonesia</p>
+                        <button class="menu-button" data-outlet="Mixue">Lihat Menu Eskimnya</button>
+                    </div>
+                    <!-- Outlet IKEA -->
+                    <div class="outlet-card inactive-right">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://logo-logos.com/2016/10/IKEA_logo.png" alt="Outlet 5">
+                        <h3>IKEA</h3>
+                        <p>Mal Taman Anggrek Lantai 3 & 4</p>
+                        <button class="menu-button" data-outlet="IKEA">Lihat Menu Eskimnya</button>
+                    </div>
+                    <!-- Outlet EM Gelato -->
+                    <div class="outlet-card inactive-right">
+                        <h3 id="outlets-title">TUKARKAN DI OUTLET:</h3>
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjOrhXTb9hBNO48bIY42tkwF2HgkrrfQ_yUzUYk3HtG0eMt05MKi4IiSZZrB_ATHOlleIQoE_RjssyKpzVHlUQEDa11Op9GhmZdPKV2Q2HgsEiJ7Lp7yCHi_FiSblLOyj0Ike5L5j4H1gGQkThIC4jUjz9371x8ILvyhCWwdeHTeieosVxz0vc7igDqTdo/s500/emm%20gelato.png" alt="Outlet 6">
+                        <h3>EM Gelato</h3>
+                        <p>Jl. Sultan Hasanudin Dalam No. 3, Blok M, Kebayoran Baru, Jakarta Selatan</p>
+                        <button class="menu-button" data-outlet="EM Gelato">Lihat Menu Eskimnya</button>
+                    </div>
+                </div>
+                <button class="slider-nav next" id="next-slide">&#10095;</button>
+            </div>
+        </div>
+
+            <p id="error-message" class="error-message"></p>
+
+            <p class="footer">© 2024 Sakinah's Voucher. All rights reserved.</p>
+        </div>
+    </div>
+
+     <!-- HTML Structure for cart -->
+    <div class="cart" id="cart">
+        <div class="cart-header">Keranjang Sakinah</div>
+        <div class="cart-items"></div>
+        <div class="cart-summary">
+            <div>
+                <input type="text" placeholder="Kode Voucher" id="promocode">
+                <button onclick="applyPromocode()">Apply</button>
+            </div>
+            <div class="discount-info">
+                <span>Lihat syarat & ketentuan untuk gunakan kode voucher</span>
+            </div>
+            <div class="cart-summary-divider"></div>
+            <div class="subtotal">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="discount">
+                <span>Diskon</span>
+                <span id="discount">-$0.00</span>
+            </div>
+            <div class="cart-summary-divider"></div>
+            <div class="cart-summary-total">
+                <span>Total</span>
+                <span id="total">$0.00</span>
+            </div>
+        </div>
+        <div class="cart-actions">
+            <button class="confirm-button" onclick="confirmToWhatsApp()">Konfirmasi ke WA</button>
+            <button class="continue-button" onclick="continueShopping()">Kembali ke menu</button>
+        </div>
+    </div>
+
+     <!-- Popup overlay for CANCER09 -->
+     <div class="popup-overlay" id="popup-overlay-cancer09">
+        <div class="popup-container cancer09-bg">
+            <button class="popup-close" id="popup-close-cancer09">&times;</button>
+            <div class="popup-content">
+                <h3>Syarat & Ketentuan</h3>
+                <div class="voucher voucher-cancer09">
+                    <div class="top-container">
+                        <div class="header">
+                            <div class="logo">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh79YYhDUa2lB0WbTP5YM7noSxsn5cb81Gs1-zRi-lzyBeCuuitAP5UE0yfNnPgyz_AN3to_I8uOuGIObViPk1z6arHSW3jHUS2jY6che8SVCnJ9d4S6G08TcxyXlNcoMsKkXICY0u5y_UaXIdwKj2eXMGnJDxZ5-sPGOK0xNVlexG7xT9T1B3VLMS-pA8/s269/eskrim%20logo%20(1).png" alt="Ice Cream Logo">
+                            </div>
+                            <div class="header-text">
+                                <h1>Ice Cream Party</h1>
+                                <div class="value">100%</div>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <p id="birthday-message">Cie ultah yang ke-19 tahun, kamu dapat hadiah es krim sayangku!</p>
+                            <ul>
+                                <li>Gunakan kode voucher "SKNH19"</li>
+                                <li>Minimal belanja eskim ≤ 50rb</li>
+                                <li>Hanya berlaku di outlet tertentu</li>
+                            </ul>
+                        </div>
+                        <div class="dashed-line"></div>
+                    </div>
+                    <div class="bottom-container">
+                        <div class="barcode">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg6coDy_kr9GZkneZpq7VpVVH6beUYwHBk8zY5ByBLmRdpPktjpYmhha0H7srSOzj77Aq-qpALHIw7KewWeKSlPzQWha0t9kidAd1riG_sueqjMSSZO3Fy4gGpmLagVKOI5dhXYOhJSxwcihPl00m0ibGm-wszw0C4gQpaDk2zXAjS_JkS6i2z7D-HiSs/s1067/Code11code.png" alt="Barcode">
+                            <div class="barcode-number">No: 1306200009072005</div>
+                        </div>
+                        <div class="footer-Voucher">
+                            <div class="validity">
+                                Berlaku 9-31 Juli 2024
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a id="download-cancer09" class="download-button download-button-cancer09" download>Download Voucher CANCER09</a>
+        </div>
+    </div>
+
+    <!-- Popup overlay for GEMINI13 -->
+    <div class="popup-overlay" id="popup-overlay-gemini13">
+        <div class="popup-container gemini13-bg">
+            <button class="popup-close" id="popup-close-gemini13">&times;</button>
+            <div class="popup-content">
+                <h3>Syarat & Ketentuan</h3>
+                <div class="voucher voucher-gemini13">
+                    <div class="top-container">
+                        <div class="header">
+                            <div class="logo">
+                                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi5QkWWor7nZYvtsXhmn6DV9n_paDiOYPaTqA9PqZKt9s4YNoYG5jjJAfBhZHnD0rCtO4z3XE_Q6fCQpnF5SRS34zIibqTPSdXbIH6jL9Zc20VR0Jju8sspqBx7i5YRVCMhO-f6esBwt6u1o2iEMbncx8hXHGFLWZlOzSBgePKmEfKmLRvlCZX2mvdgRHY/s1024/Barbie-Symbole.png" alt="Barbie Logo">
+                            </div>
+                            <div class="header-text">
+                                <h1>Mystery Gift</h1>
+                                <div class="value">Free</div>
+                            </div>
+                        </div>
+                        <div class="details">
+                            <p id="birthday-message">Umur baru, hadiah lucu! Tapi isinya apa ya? Dapatkan sekarang kadonya</p>
+                            <ul>
+                                <li>Dapatkan kado misteri di Rooftop Plaza Slipi Jaya</li>
+                                <li>Bertemu pangeran di jam 7 malam</li>
+                                <li>Harus dijemput oleh pangeran</li>
+                            </ul>
+                        </div>
+                        <div class="dashed-line"></div>
+                    </div>
+                    <div class="bottom-container">
+                        <div class="barcode">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhg6coDy_kr9GZkneZpq7VpVVH6beUYwHBk8zY5ByBLmRdpPktjpYmhha0H7srSOzj77Aq-qpALHIw7KewWeKSlPzQWha0t9kidAd1riG_sueqjMSSZO3Fy4gGpmLagVKOI5dhXYOhJSxwcihPl00m0ibGm-wszw0C4gQpaDk2zXAjS_JkS6i2z7D-HiSs/s1067/Code11code.png" alt="Barcode">
+                            <div class="barcode-number">No: 0405202304052024</div>
+                        </div>
+                        <div class="footer-Voucher">
+                            <div class="validity">
+                                Berlaku Hari-H
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a id="download-gemini13" class="download-button download-button-gemini13" download>Download Voucher GEMINI13</a>
+        </div>
+    </div>
+
+    <!-- Popup Menu for Indomaret -->
+    <div id="popup-ice-cream-menu-Indomaret" class="popup-ice-cream-menu">
+        <div class="popup-ice-cream-content">
+            <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+            <div class="popup-ice-cream-header">Menu Eskim</div>
+            <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+            <div class="product-grid">
+                <div class="product-item" data-id="Indomaret-1" data-price="8500">
+                    <img src="https://assets.klikIndomaret.com/products/20132330/20132330_1.jpg" alt="Aice Ice Cream Histeria Peach 70mL">
+                    <h3>Aice Ice Cream Histeria Peach 70mL</h3>
+                    <p class="price">Rp 8.500</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+                <div class="product-item" data-id="Indomaret-2" data-price="4700">
+                    <img src="https://assets.klikIndomaret.com/products/20116496/20116496_1.jpg" alt="Aice Ice Cream Strawberry Crispy 90Ml">
+                    <h3>Aice Ice Cream Strawberry Crispy 90Ml</h3>
+                    <p class="price">Rp 4.700</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+                <div class="product-item" data-id="Indomaret-3" data-price="5500">
+                    <img src="https://assets.klikIndomaret.com/products/20100263/20100263_1.jpg" alt="Concerto Midi Strawberry Chunk 80mL">
+                    <h3>Concerto Midi Strawberry Chunk 80mL</h3>
+                    <p class="price">Rp 5.500</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+                <div class="product-item" data-id="Indomaret-4" data-price="6200">
+                    <img src="https://assets.klikIndomaret.com/products/20100007/20100007_1.jpg" alt="Cornetto Junior Strawberry & Vanilla 80mL">
+                    <h3>Cornetto Junior Strawberry & Vanilla 80mL</h3>
+                    <p class="price">Rp 6.200</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+                <div class="product-item" data-id="Indomaret-5" data-price="24800">
+                    <img src="https://assets.klikIndomaret.com/products/20054385/20054385_1.jpg" alt="Neopolitana Extra Creamy 350Ml">
+                    <h3>Neopolitana Extra Creamy 350Ml</h3>
+                    <p class="price">Rp 24.800</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+                <div class="product-item" data-id="Indomaret-6" data-price="5000">
+                    <img src="https://assets.klikIndomaret.com/products/10005039/10005039_1.jpg" alt="Populaire Strawbery-Vanila 90Ml">
+                    <h3>Populaire Strawbery-Vanila 90Ml</h3>
+                    <p class="price">Rp 5.000</p>
+                    <div class="quantity-controls" style="display: none;">
+                        <button class="decrease-quantity">-</button>
+                        <span class="product-quantity">1</span>
+                        <button class="increase-quantity">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!-- Popup Menu for Teguk -->
+<div id="popup-ice-cream-menu-Teguk" class="popup-ice-cream-menu">
+    <div class="popup-ice-cream-content-special">
+        <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+        <div class="popup-ice-cream-header">Menu Eskim</div>
+        <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+        <div class="product-grid-2x2"> <!-- Ubah class menjadi product-grid-2x2 -->
+            <div class="product-item" data-id="Teguk-1" data-price="17000">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKMD67Kpq8L6ZHSZ_23HpKoaMTAOXt2MEE1zQC79zuQnSSUkGiNDzxb8wfZXdl4toyOatcWKChFfbxVnJGHDSO17b0O-qnCDGWoEma8tRzJaO4ZCq2sU3nWbuWObPkNRvpbXXGw7eIY7BivHb617KPZia3Y8k82JIACcRkBdCApqu26_dFIRPUvGqb398/s500/esgrim%20sandwich.png" alt="esGrim Sandwich">
+                <h3>esGrim Sandwich</h3>
+                <p class="price">Rp 17.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Teguk-2" data-price="18000">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjLFaXzH0VOdAmTqynTZcaJ1OEXFwzBS5s4g3XMX87hUZHBqQKLhK8O3FNhNZ-dEb6ceIZSC0ZCVfTPXByxEVvb_OcDgSKoRKcOVWUzauMLIPB0dhb_b1jLlFXhx3YyKjtzTNyK9ZCu-qdtBVMjYK8BI0pN2mFcoYZNVJ10x7S2A8R9RlpdNDtfrSbXjt8/s500/Esgrim%20croffle.png" alt="esGrim Croffle">
+                <h3>esGrim Croffle</h3>
+                <p class="price">Rp 18.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Teguk-3" data-price="15000">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhfn8KlTrS3HCpYreJJJP_dOV64IQkicW7s5L-JJE9Lo_SEoHl32GjcY3oBUaTYxIAcOYcv-h8dmyanh-qRzxRTwRO2eDKjkAljtq92sFUz8Yblx9sNGqOHOXNTVFzaClOaG9bEv_Q7pP-ejgszEQr2LwfycYbsP_e8UzAC0JOJTngciYSzJ2cQCjAEcGk/s500/esgrim%20bowl.png" alt="esGrim Bowl">
+                <h3>esGrim Bowl</h3>
+                <p class="price">Rp 15.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Teguk-4" data-price="8000">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhYa11V9lJJvdIsp7HjTVLUVralpgZB9ZvhG6Vh01t60puGkMONodoL4yGAeOKZiG-v-HqXsUdIXj1_Tmic3nK3uJJbABrA9vzzhB1O4SDDq2JpGctoGS_r81a2uSYYD7lFU_2eHf5gTprVdGbuKU_C917mSyBm4V5BOVAPrk_r06N8lRCYE6reBhftbcg/s500/rainbow%20ice%20cream.png" alt="Rainbow esGrim Cone">
+                <h3>Rainbow esGrim Cone</h3>
+                <p class="price">Rp 8.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Menu for Sour Sally -->
+<div id="popup-ice-cream-menu-Sour Sally" class="popup-ice-cream-menu">
+    <div class="popup-ice-cream-content-special">
+        <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+        <div class="popup-ice-cream-header">Menu Eskim</div>
+        <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+        <div class="product-grid-2x2"> <!-- Ubah class menjadi product-grid-2x2 -->
+            <div class="product-item" data-id="Sour Sally-1" data-price="29500">
+                <img src="https://soursally.co.id/wp-content/uploads/2023/10/cup-black-large-300x300.png" alt="Black Sakura">
+                <h3>Black Sakura</h3>
+                <p class="price">Rp 29.500</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Sour Sally-2" data-price="22000">
+                <img src="https://soursally.co.id/wp-content/uploads/2023/10/cup-white-large-300x300.png" alt="White Skim">
+                <h3>Whites Skim</h3>
+                <p class="price">Rp 22.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Menu for Mixue -->
+<div id="popup-ice-cream-menu-Mixue" class="popup-ice-cream-menu">
+    <div class="popup-ice-cream-content">
+        <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+        <div class="popup-ice-cream-header">Menu Eskim</div>
+        <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+        <div class="product-grid">
+            <div class="product-item" data-id="Mixue-1" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/01/Berry-Bean-Sundae.jpg" alt="Berry Bean Sundae">
+                <h3>Berry Bean Sundae</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Mixue-2" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/01/Strawberry-Mi-shake.jpg" alt="Strawberry Mi-shake">
+                <h3>Strawberry Mi-shake</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Mixue-3" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/01/Strawberry-Lucky-Sundae.jpg" alt="Strawberry Lucky Sundae">
+                <h3>Strawberry Lucky Sundae</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Mixue-4" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/01/Strawberry-Smoothies-With-Ice-Cream.jpg" alt="Strawberry Smoothies With Ice Cream">
+                <h3>Strawberry Smoothies With Ice Cream</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Mixue-5" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/05/Strawberry-Sundae-Mixue.jpg" alt="Strawberry Sundae">
+                <h3>Strawberry Sundae</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="Mixue-6" data-price="16000">
+                <img src="https://Mixue.asia/wp-content/uploads/2023/05/Mixed-Sundae-Vanilla-Strawberry-Mixue.jpg" alt="Mix Sundae">
+                <h3>Mix Sundae</h3>
+                <p class="price">Rp 16.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Menu for IKEA -->
+<div id="popup-ice-cream-menu-IKEA" class="popup-ice-cream-menu">
+    <div class="popup-ice-cream-content">
+        <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+        <div class="popup-ice-cream-header">Menu Eskim</div>
+        <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+        <div class="product-grid">
+            <div class="product-item" data-id="IKEA-1" data-price="18000">
+                <img src="https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/pageImages/page__en_us_1713976946752_7_1.webp" alt="Yoghurt Frukt">
+                <h3>Yoghurt Frukt</h3>
+                <p class="price">Rp 18.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="IKEA-2" data-price="8000">
+                <img src="https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/pageImages/page__en_us_1681201086116__0.jpeg" alt="Es krim durian">
+                <h3>Es krim durian</h3>
+                <p class="price">Rp 8.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+            <div class="product-item" data-id="IKEA-3" data-price="6000">
+                <img src="https://d2xjmi1k71iy2m.cloudfront.net/dairyfarm/id/pageImages/page__en_us_15410563131.jpeg" alt="Es Krim">
+                <h3>Es Krim</h3>
+                <p class="price">Rp 6.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart(this)">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Popup Menu for EM Gelato -->
+<div id="popup-ice-cream-menu-EM Gelato" class="popup-ice-cream-menu">
+    <div class="popup-ice-cream-content">
+        <button class="popup-ice-cream-close-button" onclick="closeIceCreamPopup()">&times;</button>
+        <!-- Ikon Keranjang Belanja dengan Notifikasi Jumlah Item -->
+        <div class="icon-cart" onclick="toggleCart()">
+            <div class="cart-line-1"></div>
+            <div class="cart-line-2"></div>
+            <div class="cart-line-3"></div>
+            <div class="cart-wheel"></div>
+            <span class="cart-count" id="cart-count">0</span>
+        </div>
+        <!-- Total Price and Notification Elements -->
+        <div class="total-price-container">
+            <span>= Rp.<span id="total-price">0</span></span>
+            <div class="price-limit-overlay" id="price-limit-overlay"></div> <!-- Overlay Element -->
+            <div class="price-limit-notification" id="price-limit-notification">
+                Gaboleh lebih dari 50K ya sayangku
+                <button class="close-button" id="close-notification">OTTEI</button>
+            </div>
+        </div>
+        <div class="popup-ice-cream-header">Menu Eskim</div>
+        <div class="popup-ice-cream-section-title">Tersedia Rasa</div>
+        <div class="product-grid">
+            <div class="product-item" data-id="EM Gelato-1" data-price="38000">
+                <img src="https://instagram.fcgk27-2.fna.fbcdn.net/v/t39.30808-6/363338396_17905467638805295_5686037814445626111_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi4xMDQ5eDEwNDkuc2RyLmYzMDgwOCJ9&_nc_ht=instagram.fcgk27-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=0x9duoXtoqMQ7kNvgGuTeMm&edm=AFg4Q8wAAAAA&ccb=7-5&ig_cache_key=MzE1NTM2Njg0NTc3MTk0Mjc1NQ%3D%3D.2-ccb7-5&oh=00_AYDqx_TfEDWxba5IwxJdjU5aKR_CXIVlgKzLAluCaJNDxg&oe=6688C3FF&_nc_sid=0b30b7" alt="Small 2 Flavors">
+                <h3>Small 2 Flavors</h3>
+                <p class="price">Rp 38.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart">Tambah</button>
+            </div>
+            <div class="product-item" data-id="EM Gelato-2" data-price="50000">
+                <img src="https://instagram.fcgk27-2.fna.fbcdn.net/v/t39.30808-6/358101601_17902408613805295_2935011872513606899_n.jpg?stp=dst-jpg_e35&efg=eyJ2ZW5jb2RlX3RhZyI6ImltYWdlX3VybGdlbi44ODd4ODg3LnNkci5mMzA4MDgifQ&_nc_ht=instagram.fcgk27-2.fna.fbcdn.net&_nc_cat=107&_nc_ohc=smAj7yt53FEQ7kNvgELyXpm&edm=AFg4Q8wAAAAA&ccb=7-5&ig_cache_key=MzE0MDczODcwNDUwNDA3ODg4Ng%3D%3D.2-ccb7-5&oh=00_AYB5-7m7dMbPynWV0tIMi0k3DMgixnBaC0PGND0GxT80og&oe=6688A796&_nc_sid=0b30b7" alt="Regular 3 Flavors">
+                <h3>Regular 3 Flavors</h3>
+                <p class="price">Rp 50.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart">Tambah</button>
+            </div>
+            <div class="product-item" data-id="EM Gelato-3" data-price="38000">
+                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiuOdseNTExGl4HIX-ys8CwIvk3slMtfrD8t2eOMkbjElzHMsglKuN_hX-Tt__YswoKFlfNGipi6TxnlaUDz7VDtx9Hzy4Rzhw_um16jJ5JjifLPTvopACeMtGeET9AMXFlg4suFp26l33td9wQ1sJgi86iRJH1rRSrwLwGWFr3eIMkvbrw4sHjMrjxQcw/s1440/eskrim%20em%20gelato.jpg" alt="Cone 2 Flavors">
+                <h3>Cone 2 Flavors</h3>
+                <p class="price">Rp 38.000</p>
+                <div class="quantity-controls" style="display: none;">
+                    <button class="decrease-quantity">-</button>
+                    <span class="product-quantity">1</span>
+                    <button class="increase-quantity">+</button>
+                </div>
+                <button class="add-to-cart">Tambah</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const voucherCodes = {
+        "CANCER09": {
+            imageUrl: "",
+            showOutlets: true,
+            successMessage: "YEAY DAPAT VOUCHER ESKIM🍨",
+            followUpMessage: "Selamat menikmati hadiahnya sayang!",
+            popupId: "popup-overlay-cancer09",
+            downloadButtonText: "Download Voucher",
+            tncButtonText: "Lihat Syarat & Ketentuan",
+            downloadUrl: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgVsVeaHj-OwHdfyNG0Bag_29Sn7Wos6ZATt309pOGBcMszt9Sly0XP7WGHuSmiTKeyPmaSycYb0vV1fb0m-WHhJ-l-GFk5Yyf_7ZN3cSlCdc_cWEYsObYPo4VVTqTYfgk3ik4vrMkXlIR7VYzE7OO98aKeYgg4fZf7nBMflruQMeftVm6XKJlZcN4a03c/s1024/download%20voucher%20cancer09%20(1).png"
+        },
+        "GEMINI13": {
+            imageUrl: "",
+            showOutlets: false,
+            successMessage: "ASIK DAPAT KADO RAHASIA🥳",
+            followUpMessage: "Segera bertemu dengan pangeranmu!",
+            popupId: "popup-overlay-gemini13",
+            downloadButtonText: "Download Voucher",
+            tncButtonText: "Lihat Syarat & Ketentuan",
+            downloadUrl: "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEistX8bZ14RMdyJfoAObtbudhXZYaF206PokRQlAnXeVjD5yIFIhFtVR3c2dRwVL2UbXW3d1D93QBJRJ-sTBZmonmIhHBd_8o8OAIT3NJAUauIY_vOg8r_p2UDGaM5rdTPNPLtvp-F4wbMSPzvEoecp04IJxYMhTa_hkkeYnyPg4Wb-hHURkcVN13ATiNM/s1024/voucher%20barbie%20(1).png"
+        }
+    };
+    
+    const submitButton = document.getElementById('submit-button');
+    const voucherInput = document.getElementById('voucher-input');
+    const voucherImage = document.getElementById('voucher-image');
+    const voucherResult = document.getElementById('voucher-result');
+    const loadingSpinner = document.getElementById('loading-spinner');
+    const validFeedback = document.getElementById('valid-feedback');
+    const invalidFeedback = document.getElementById('invalid-feedback');
+    const errorMessage = document.getElementById('error-message');
+    const voucherMessage = document.getElementById('voucher-message');
+    const viewTncButton = document.getElementById('view-tnc-button');
+    const outletContainer = document.getElementById('outlet-container');
+    const outletsTitle = document.getElementById('outlets-title');
+    const successMessage = document.getElementById('success-message');
+    const nextSlideButton = document.getElementById('next-slide');
+    const prevSlideButton = document.getElementById('prev-slide');
+    const popupOverlayCancer09 = document.getElementById('popup-overlay-cancer09');
+    const popupOverlayGemini13 = document.getElementById('popup-overlay-gemini13');
+    const popupCloseCancer09 = document.getElementById('popup-close-cancer09');
+    const popupCloseGemini13 = document.getElementById('popup-close-gemini13');
+    const downloadButtonCancer09 = document.getElementById('download-cancer09');
+    const downloadButtonGemini13 = document.getElementById('download-gemini13');
+    
+    const gemini13Slider = document.getElementById('gemini13-slider');
+    const gemini13Slides = gemini13Slider.querySelectorAll('.slide');
+    const gemini13PrevSlideButton = document.getElementById('gemini13-prev-slide');
+    const gemini13NextSlideButton = document.getElementById('gemini13-next-slide');
+    
+    let currentSlide = 0;
+    let currentGemini13Slide = 0;
+    let currentPopupId = "";
+    let activeOutlet = ""; // Store the active outlet
+    
+    voucherInput.addEventListener('keyup', function(e) {
+        if (e.key === 'Enter' && voucherInput.value.trim() !== "") {
+            redeemVoucher();
+        }
+    });
+    
+    voucherInput.addEventListener('input', function() {
+        const input = voucherInput.value.trim().toUpperCase();
+        if (input === "") {
+            validFeedback.style.display = 'none';
+            invalidFeedback.style.display = 'none';
+            voucherInput.style.borderColor = '#ccc';
+        } else if (voucherCodes[input]) {
+            validFeedback.style.display = 'block';
+            invalidFeedback.style.display = 'none';
+            voucherInput.style.borderColor = '#4CAF50';
+        } else {
+            validFeedback.style.display = 'none';
+            invalidFeedback.style.display = 'block';
+            voucherInput.style.borderColor = '#ec5353';
+        }
+    });
+    
+    submitButton.addEventListener('click', function() {
+        if (voucherInput.value.trim() !== "") {
+            redeemVoucher();
+        }
+    });
+    
+    function redeemVoucher() {
+        const input = voucherInput.value.trim().toUpperCase();
+    
+        if (input === "") {
+            showError('Silakan masukkan kode voucher.');
+            return;
+        }
+    
+        loadingSpinner.style.display = 'inline-block';
+        voucherInput.disabled = true;  // Nonaktifkan kolom input
+        submitButton.disabled = true;  // Nonaktifkan tombol submit
+    
+        setTimeout(() => {
+            if (voucherCodes[input]) {
+                displayVoucher(voucherCodes[input]);
+            } else {
+                showError('Kode voucher tidak valid. Silakan coba lagi.');
+            }
+            loadingSpinner.style.display = 'none';
+            voucherInput.disabled = false;  // Aktifkan kembali kolom input
+            submitButton.disabled = false;  // Aktifkan kembali tombol submit
+        }, 1000);
+    }
+    
+    function setMapSize(width, height) {
+        const mapIframe = document.getElementById('maps-iframe');
+        mapIframe.style.width = width + 'px';
+        mapIframe.style.height = height + 'px';
+    }
+    
+    function displayVoucher(voucher) {
+        document.body.style.overflowY = 'auto';
+        document.querySelector('.container-wrapper').style.alignItems = 'flex-start';
+    
+        document.getElementById('voucher-image-coupon-cancer09').style.display = 'none';
+        document.getElementById('voucher-image-coupon-gemini13').style.display = 'none';
+        document.getElementById('maps-container').style.display = 'none';
+    
+        const couponContainers = document.querySelectorAll('.coupon');
+        couponContainers.forEach(container => {
+            container.classList.remove('coupon-cancer09', 'coupon-gemini13');
+        });
+    
+        successMessage.classList.remove('success-message-cancer09', 'success-message-gemini13');
+    
+        if (voucher.imageUrl) {
+            voucherImage.src = voucher.imageUrl;
+            voucherImage.style.display = 'block';
+        } else {
+            voucherImage.style.display = 'none';
+            if (voucher.popupId === 'popup-overlay-cancer09') {
+                document.getElementById('voucher-image-coupon-cancer09').style.display = 'flex';
+                document.getElementById('voucher-image-coupon-cancer09').classList.add('coupon-cancer09');
+                document.getElementById('maps-container').style.display = 'none';
+                successMessage.classList.add('success-message-cancer09');
+            } else if (voucher.popupId === 'popup-overlay-gemini13') {
+                document.getElementById('voucher-image-coupon-gemini13').style.display = 'flex';
+                document.getElementById('voucher-image-coupon-gemini13').classList.add('coupon-gemini13');
+                document.getElementById('maps-container').style.display = 'block';
+                setMapSize(360, 200);
+                resetGemini13Slides();
+                updateGemini13NavigationButtons();
+                successMessage.classList.add('success-message-gemini13');
+            }
+        }
+    
+        successMessage.textContent = voucher.successMessage;
+        voucherMessage.textContent = voucher.followUpMessage;
+        voucherResult.classList.add('show');
+        voucherMessage.style.display = 'block';
+        errorMessage.style.display = 'none';
+        if (voucher.showOutlets) {
+            document.getElementById('outlet-slider').style.display = 'block';
+            resetSlides();
+            updateNavigationButtons();
+        } else {
+            document.getElementById('outlet-slider').style.display = 'none';
+        }
+        outletsTitle.style.display = voucher.showOutlets ? 'block' : 'none';
+        currentPopupId = voucher.popupId;
+    
+        viewTncButton.textContent = voucher.tncButtonText;
+        if (voucher.popupId === 'popup-overlay-cancer09') {
+            downloadButtonCancer09.textContent = voucher.downloadButtonText;
+            downloadButtonCancer09.style.display = 'block';
+            downloadButtonCancer09.href = voucher.downloadUrl;
+            downloadButtonGemini13.style.display = 'none';
+            viewTncButton.className = "modern-button tnc-button tnc-button-cancer09";
+        } else if (voucher.popupId === 'popup-overlay-gemini13') {
+            downloadButtonGemini13.textContent = voucher.downloadButtonText;
+            downloadButtonGemini13.style.display = 'block';
+            downloadButtonGemini13.href = voucher.downloadUrl;
+            downloadButtonCancer09.style.display = 'none';
+            viewTncButton.className = "modern-button tnc-button tnc-button-gemini13";
+        }
+    }
+    
+    function showError(message) {
+        errorMessage.textContent = message;
+        errorMessage.style.display = 'block';
+        voucherResult.classList.remove('show');
+        voucherMessage.style.display = 'none';
+        document.getElementById('outlet-slider').style.display = 'none';
+        outletsTitle.style.display = 'none';
+    }
+    
+    nextSlideButton.addEventListener('click', () => {
+        const totalSlides = outletContainer.children.length;
+        if (currentSlide < totalSlides - 1) {
+            setSlide(currentSlide + 1, 'right');
+        }
+    });
+    
+    prevSlideButton.addEventListener('click', () => {
+        const totalSlides = outletContainer.children.length;
+        if (currentSlide > 0) {
+            setSlide(currentSlide - 1, 'left');
+        }
+    });
+    
+    function setSlide(index, direction) {
+        const totalSlides = outletContainer.children.length;
+        if (index < 0 || index >= totalSlides) return;
+    
+        const currentCard = outletContainer.children[currentSlide];
+        const nextCard = outletContainer.children[index];
+    
+        currentCard.classList.remove('active');
+        currentCard.classList.add(direction === 'right' ? 'inactive-left' : 'inactive-right');
+        nextCard.classList.add('active');
+        nextCard.classList.remove(direction === 'right' ? 'inactive-right' : 'inactive-left');
+    
+        currentSlide = index;
+        activeOutlet = nextCard.querySelector('.menu-button').getAttribute('data-outlet');
+        updateNavigationButtons();
+        resetPopupMenu();
+    }
+    
+    function resetSlides() {
+        Array.from(outletContainer.children).forEach((card, index) => {
+            card.classList.remove('active', 'inactive-left', 'inactive-right');
+            card.classList.add(index === 0 ? 'active' : 'inactive-right');
+        });
+        currentSlide = 0;
+        activeOutlet = outletContainer.children[0].querySelector('.menu-button').getAttribute('data-outlet');
+        updateNavigationButtons();
+        resetPopupMenu();
+    }
+    
+    function updateNavigationButtons() {
+        const totalSlides = outletContainer.children.length;
+        if (currentSlide === 0) {
+            prevSlideButton.style.display = 'none';
+            nextSlideButton.style.display = 'block';
+        } else if (currentSlide === totalSlides - 1) {
+            nextSlideButton.style.display = 'none';
+            prevSlideButton.style.display = 'block';
+        } else {
+            prevSlideButton.style.display = 'block';
+            nextSlideButton.style.display = 'block';
+        }
+    }
+    
+    function resetPopupMenu() {
+        document.querySelectorAll('.popup-ice-cream-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+    }
+    
+    function showIceCreamPopup(outlet) {
+        resetPopupMenu();
+        const popupMenu = document.getElementById(`popup-ice-cream-menu-${outlet}`);
+        if (popupMenu) {
+            popupMenu.style.display = 'flex';
+            const cartCount = getCartCount();
+            popupMenu.querySelectorAll('.cart-count').forEach(cartCountElement => {
+                cartCountElement.textContent = cartCount;
+            });
+        }
+    }
+    
+    function closeIceCreamPopup() {
+        resetPopupMenu();
+    }
+    
+    document.querySelectorAll('.menu-button').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const outlet = event.target.getAttribute('data-outlet');
+            if (outlet === activeOutlet) {
+                showIceCreamPopup(outlet);
+            }
+        });
+    });
+    
+    document.querySelectorAll('.popup-ice-cream-close-button').forEach(button => {
+        button.addEventListener('click', closeIceCreamPopup);
+    });
+    
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const productItem = event.target.closest('.product-item');
+            const quantityControls = productItem.querySelector('.quantity-controls');
+            const addToCartButton = productItem.querySelector('.add-to-cart');
+            const price = parseInt(productItem.querySelector('.price').textContent.replace('Rp', '').replace('.', '').trim());
+    
+            if (calculateTotalPrice() + price > 50000) {
+                showPriceLimitNotification();
+                return;
+            }
+    
+            quantityControls.style.display = 'flex';
+            addToCartButton.style.display = 'none';
+            productItem.querySelector('.product-quantity').textContent = 1;
+    
+            addToCart(productItem);
+            updateCartCount();
+            updateTotalPrice();
+            setProductEventListeners();
+            hideEmptyCartNotification();
+        });
+    });
+    
+    function showPriceLimitNotification(isCart = false) {
+        if (isCart) {
+            const cartOverlayInternal = document.createElement('div');
+            cartOverlayInternal.classList.add('cart-overlay-internal');
+            cartOverlayInternal.style.display = 'block';
+    
+            const cartNotification = document.createElement('div');
+            cartNotification.classList.add('cart-price-limit-notification');
+            cartNotification.innerHTML = `
+                <div>
+                    Harus ≤ 50k sayang
+                    <button class="close-button" id="close-cart-notification">OTTEI</button>
+                </div>
+            `;
+            cart.appendChild(cartOverlayInternal);
+            cart.appendChild(cartNotification);
+    
+            // Nonaktifkan seluruh tombol dan elemen input di dalam cart termasuk tombol apply voucher
+            document.querySelectorAll('.cart-actions button, .cart-item .quantity-control button, .cart-item .remove-button, .cart-summary input, .cart-summary button').forEach(button => button.disabled = true);
+        } else {
+            document.body.classList.add('disable-all');
+            document.querySelectorAll('.price-limit-notification').forEach(n => n.style.display = 'block');
+            document.querySelectorAll('.price-limit-overlay').forEach(o => o.style.display = 'block');
+        }
+    }
+
+    function hidePriceLimitNotification() {
+        document.body.classList.remove('disable-all');
+        document.querySelectorAll('.price-limit-notification').forEach(n => n.style.display = 'none');
+        document.querySelectorAll('.price-limit-overlay').forEach(o => o.style.display = 'none');
+
+        const cartOverlayInternal = document.querySelector('.cart-overlay-internal');
+        if (cartOverlayInternal) {
+            cartOverlayInternal.remove();
+        }
+
+        const cartNotification = document.querySelector('.cart-price-limit-notification');
+        if (cartNotification) {
+            cartNotification.remove();
+        }
+
+        // Aktifkan kembali seluruh tombol dan elemen input di dalam cart termasuk tombol apply voucher
+        document.querySelectorAll('.cart-actions button, .cart-item .quantity-control button, .cart-item .remove-button, .cart-summary input, .cart-summary button').forEach(button => button.disabled = false);
+    }
+
+    document.addEventListener('click', function(event) {
+        if (event.target && event.target.id === 'close-cart-notification') {
+            hidePriceLimitNotification();
+        }
+    });
+
+    // Event listener untuk tombol close button di luar cart
+    document.querySelectorAll('.close-button').forEach(button => {
+        button.addEventListener('click', hidePriceLimitNotification);
+    });            
+    
+    function setProductEventListeners() {
+        document.querySelectorAll('.quantity-controls').forEach(controls => {
+            if (!controls.dataset.listenersAdded) {
+                const productItem = controls.closest('.product-item');
+    
+                controls.querySelector('.increase-quantity').addEventListener('click', () => {
+                    changeQuantity(productItem, 1);
+                });
+    
+                controls.querySelector('.decrease-quantity').addEventListener('click', () => {
+                    changeQuantity(productItem, -1);
+                });
+    
+                controls.dataset.listenersAdded = true;
+            }
+        });
+    
+        document.querySelectorAll('.remove-button').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productId = event.target.closest('.cart-item').id.replace('item-', '');
+                removeItem(productId);
+            });
+        });
+    }
+    
+    function changeQuantity(productItem, change) {
+        const quantityDisplay = productItem.querySelector('.product-quantity');
+        const quantityControls = productItem.querySelector('.quantity-controls');
+        const addToCartButton = productItem.querySelector('.add-to-cart');
+        let quantity = parseInt(quantityDisplay.textContent);
+        const price = parseInt(productItem.querySelector('.price').textContent.replace('Rp', '').replace('.', '').trim());
+    
+        if (change > 0 && (calculateTotalPrice() + price > 50000)) {
+            showPriceLimitNotification();
+            return;
+        }
+    
+        quantity += change;
+        if (quantity < 1) {
+            quantity = 0;
+            quantityControls.style.display = 'none';
+            addToCartButton.style.display = 'inline-block';
+            quantityDisplay.textContent = 1;
+            removeFromCart(productItem);
+        } else {
+            quantityDisplay.textContent = quantity;
+            updateCartItem(productItem, quantity);
+    
+            // Nonaktifkan tombol decrease hanya jika item ada di dalam keranjang dan jumlahnya adalah 1
+            if (productItem.closest('.cart-item')) {
+                const decreaseButton = quantityControls.querySelector('.decrease-quantity');
+                decreaseButton.disabled = quantity === 1;
+            }
+        }
+    
+        updateCartCount();
+        updateTotalPrice();
+    }
+    
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setProductEventListeners();
+    
+        const cartCount = getCartCount();
+        document.querySelectorAll('.cart-count').forEach(cartCountElement => {
+            cartCountElement.textContent = cartCount;
+        });
+    
+        const productStatus = getProductStatus();
+        productStatus.forEach(status => {
+            const item = document.querySelectorAll('.product-item')[status.index];
+            const quantityControls = item.querySelector('.quantity-controls');
+            const addToCartButton = item.querySelector('.add-to-cart');
+    
+            item.querySelector('.product-quantity').textContent = status.quantity;
+            if (status.isVisible) {
+                quantityControls.style.display = 'flex';
+                addToCartButton.style.display = 'none';
+            } else {
+                quantityControls.style.display = 'none';
+                addToCartButton.style.display = 'inline-block';
+            }
+        });
+    
+        loadCartFromLocalStorage();
+        updateCartCount();
+        updateTotalPrice();
+    });   
+    
+    // Pastikan button konfirmasi ke WhatsApp tetap aktif
+    if (document.querySelectorAll('.cart-item').length > 0) {
+        document.querySelector('.confirm-button').disabled = false;
+    }
+
+    // Tambahkan event listener untuk menghapus notifikasi keranjang kosong saat keranjang dibuka
+    document.querySelector('.icon-cart').addEventListener('click', () => {
+        hideEmptyCartNotification();
+    });
+    
+    function updateCartCount() {
+        let totalQuantity = 0;
+        document.querySelectorAll('.quantity-controls').forEach(controls => {
+            const quantityDisplay = controls.querySelector('.product-quantity');
+            if (controls.style.display !== 'none') {
+                totalQuantity += parseInt(quantityDisplay.textContent);
+            }
+        });
+    
+        saveCartCount(totalQuantity);
+        saveProductStatus();
+    
+        document.querySelectorAll('.cart-count').forEach(cartCount => {
+            cartCount.textContent = totalQuantity;
+        });
+    
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const noItemsMessage = document.getElementById('no-items-message');
+        if (totalQuantity === 0) {
+            if (!noItemsMessage) {
+                const messageElement = document.createElement('p');
+                messageElement.id = 'no-items-message';
+                messageElement.textContent = 'Belum ada eskim yang kamu tambahkan';
+                messageElement.style.color = 'grey'; // Menambahkan warna hitam pada teks
+                cartItemsContainer.insertBefore(messageElement, cartItemsContainer.firstChild);
+            }
+        } else {
+            if (noItemsMessage) {
+                noItemsMessage.remove();
+            }
+        }
+    
+        updateTotalPrice();
+    }
+    
+    
+    function saveCartCount(count) {
+        localStorage.setItem('cartCount', count);
+    }
+    
+    function getCartCount() {
+        return parseInt(localStorage.getItem('cartCount')) || 0;
+    }
+    
+    function saveProductStatus() {
+        const productStatus = [];
+        document.querySelectorAll('.product-item').forEach((item, index) => {
+            const quantity = item.querySelector('.product-quantity').textContent;
+            const isVisible = item.querySelector('.quantity-controls').style.display !== 'none';
+            productStatus.push({ index, quantity, isVisible });
+        });
+        localStorage.setItem('productStatus', JSON.stringify(productStatus));
+    }
+    
+    function getProductStatus() {
+        return JSON.parse(localStorage.getItem('productStatus')) || [];
+    }
+    
+    function calculateTotalPrice() {
+        let totalPrice = 0;
+        document.querySelectorAll('.quantity-controls').forEach(controls => {
+            if (controls.style.display !== 'none') {
+                const quantity = parseInt(controls.querySelector('.product-quantity').textContent);
+                const price = parseInt(controls.closest('.product-item').querySelector('.price').textContent.replace('Rp', '').replace('.', '').trim());
+                totalPrice += quantity * price;
+            }
+        });
+        return totalPrice;
+    }
+    
+    function updateTotalPrice() {
+        const totalPrice = calculateTotalPrice();
+        document.querySelectorAll('#total-price').forEach(priceElement => {
+            priceElement.textContent = totalPrice.toLocaleString('id-ID');
+        });
+    
+        if (totalPrice > 50000) {
+            showPriceLimitNotification();
+        } else {
+            hidePriceLimitNotification();
+        }
+    }
+    
+    const cart = document.getElementById('cart');
+    const cartItems = document.querySelector('.cart-items');
+    let cartVisible = false;
+    const prices = {};
+    const quantities = {};
+    
+    const overlay = document.createElement('div');
+    overlay.classList.add('cart-overlay');
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.5)';
+    overlay.style.zIndex = '1000';
+    overlay.style.display = 'none';
+    document.body.appendChild(overlay);
+    
+    function toggleCart() {
+        cartVisible = !cartVisible;
+        cart.classList.toggle('active', cartVisible);
+        overlay.style.display = cartVisible ? 'block' : 'none';
+        document.body.classList.toggle('disable-all', cartVisible);
+    }
+    
+    function addToCart(productItem) {
+        const productId = productItem.dataset.id;
+        const productName = productItem.querySelector('h3').innerText;
+        const productPrice = parseFloat(productItem.dataset.price);
+        const productImage = productItem.querySelector('img').src;
+        const outlet = activeOutlet;
+
+        if (!prices[productId]) {
+            prices[productId] = productPrice;
+            quantities[productId] = 1;
+
+            const cartItem = document.createElement('div');
+            cartItem.classList.add('cart-item');
+            cartItem.id = `item-${productId}`;
+            cartItem.innerHTML = `
+                <img src="${productImage}" alt="${productName}" class="product-image">
+                <div class="cart-item-details">
+                    <span>${productName}</span>
+                    <div class="cart-item-outlet" style="color: grey; margin-top: 2px;">Outlet: ${outlet}</div> <!-- Added margin-top -->
+                </div>
+                <div class="cart-item-actions">
+                    <div class="quantity-control">
+                        <button onclick="updateQuantity('${productId}', -1)" disabled>-</button>
+                        <span id="quantity-${productId}">1</span>
+                        <button onclick="updateQuantity('${productId}', 1)">+</button>
+                    </div>
+                    <span>Rp ${productPrice.toLocaleString('id-ID')}</span>
+                    <button class="remove-button" onclick="removeItem('${productId}')">
+                        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhexGkgpKZGcj_l2Wt6_R39GOMCBt4XmcJe0MZVg-DL_yN3XabeqgPPr_qRBgCT0z3SpLBSvRkhKi1IC7J3lpjgLXY6PufTDnw07J3IGqEHO_OOH8TpGJY6FOrqhvFC_LRwBZVidlhj-j5I1uwd3lwt3ZiBNjXk-hTG_79cmNlLJ0afHt_cmjXSF-vtNe8/s512/trash-can.png" alt="Remove" class="trash-icon">
+                    </button>
+                </div>
+            `;
+            cartItems.appendChild(cartItem);
+        } else {
+            updateQuantity(productId, 1);
+        }
+
+        saveCartToLocalStorage();
+        updateCart();
+    }
+    
+    function updateCartItem(productItem, quantity) {
+        const productId = productItem.dataset.id;
+        quantities[productId] = quantity;
+        document.getElementById(`quantity-${productId}`).innerText = quantity;
+    
+        // Menonaktifkan tombol decrease hanya jika item ada di dalam keranjang dan jumlahnya adalah 1
+        const cartItem = document.getElementById(`item-${productId}`);
+        if (cartItem) {
+            const decreaseButton = cartItem.querySelector('.quantity-control button:first-child');
+            decreaseButton.disabled = quantity === 1;
+        }
+    
+        saveCartToLocalStorage(); // Save cart to localStorage
+        updateCart();
+    }
+    
+    function removeFromCart(productItem) {
+        const productId = productItem.dataset.id;
+        document.getElementById(`item-${productId}`).remove();
+        delete prices[productId];
+        delete quantities[productId];
+        saveCartToLocalStorage(); // Save cart to localStorage
+        updateCart();
+    }
+    
+    function removeItem(productId) {
+        const cartItem = document.getElementById(`item-${productId}`);
+        if (cartItem) {
+            // Tambahkan kelas animasi fade-out-scale
+            cartItem.classList.add('fade-out-scale');
+            
+            // Setelah animasi selesai, hapus item dari cart
+            setTimeout(() => {
+                cartItem.remove();
+                delete prices[productId];
+                delete quantities[productId];
+                const productItem = document.querySelector(`.product-item[data-id='${productId}']`);
+                productItem.querySelector('.quantity-controls').style.display = 'none';
+                productItem.querySelector('.add-to-cart').style.display = 'inline-block';
+                saveCartToLocalStorage(); // Save cart to localStorage
+                updateCart();
+            }, 300); // Waktu yang sama dengan durasi animasi fade-out-scale
+        }
+    }
+    
+    function applyPromocode() {
+        const promocode = document.getElementById('promocode').value;
+        const discountInfo = document.querySelector('.discount-info');
+        if (promocode === 'SKNH19') {
+            updateCart();
+            showVoucherAppliedNotification();
+        } else {
+            showInvalidVoucherNotification();
+        }
+    }
+    
+    function showVoucherAppliedNotification() {
+        const discountInfo = document.querySelector('.discount-info');
+        discountInfo.textContent = 'Voucher berhasil digunakan!';
+        discountInfo.style.color = 'green'; // Menambahkan warna hijau pada teks
+    
+        setTimeout(() => {
+            discountInfo.textContent = 'Waktunya pesta eskim sayangku!';
+            discountInfo.style.color = ''; // Mengembalikan warna teks ke warna semula
+        }, 3000); // Notifikasi akan hilang setelah 3 detik
+    }
+    
+    function showInvalidVoucherNotification() {
+        const discountInfo = document.querySelector('.discount-info');
+        discountInfo.textContent = 'Kode voucher yang dimasukkan salah.';
+        discountInfo.style.color = 'red'; // Menambahkan warna merah pada teks
+    
+        setTimeout(() => {
+            discountInfo.textContent = 'Lihat syarat & ketentuan untuk gunakan kode voucher';
+            discountInfo.style.color = ''; // Mengembalikan warna teks ke warna semula
+        }, 3000); // Notifikasi akan hilang setelah 3 detik
+    }
+
+    
+    function calculateSubtotal() {
+        let subtotal = 0;
+        for (let productId in prices) {
+            subtotal += prices[productId] * quantities[productId];
+        }
+        return subtotal;
+    }
+    
+    function calculateDiscount() {
+        const promocode = document.getElementById('promocode').value;
+        if (promocode === 'SKNH19') {
+            return calculateSubtotal()* 1.00; // Diskon 100%
+        }
+        return 0;
+    }
+    
+    function updateCart() {
+        const subtotal = calculateSubtotal();
+        const discount = calculateDiscount();
+        const total = subtotal - discount;
+    
+        document.getElementById('subtotal').innerText = `Rp ${subtotal.toLocaleString('id-ID')}`;
+        document.getElementById('discount').innerText = `- Rp ${discount.toLocaleString('id-ID')}`;  // Menambahkan tanda "-"
+        document.getElementById('total').innerText = `Rp ${total.toLocaleString('id-ID')}`;
+    
+        updateCartCount();
+    
+        if (total <= 0) {
+            hidePriceLimitNotification(); // Ensure price limit notification is hidden if total is 0 or less
+        }
+    }
+    
+    // Tambahkan notifikasi di atas tombol "Konfirmasi ke WA" jika keranjang kosong
+    function confirmToWhatsApp() {
+    const cartItems = document.querySelectorAll('.cart-item');
+    if (cartItems.length === 0) {
+        showEmptyCartNotification();
+        return;
+    }
+
+    let message = 'Sayang ini eskim pilihan aku, makaci banyak ya happy dapet eskim cuma Rp.0:\n\n';
+
+    cartItems.forEach(item => {
+        const productName = item.querySelector('.cart-item-details span').innerText;
+        const quantity = item.querySelector('.quantity-control span').innerText;
+        const outlet = item.querySelector('.cart-item-outlet').innerText;
+        message += `- ${productName} (${outlet}): ${quantity} pcs\n`;
+    });
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+function showEmptyCartNotification() {
+    const cartActions = document.querySelector('.cart-actions');
+    let emptyCartNotification = document.getElementById('empty-cart-notification');
+
+    if (!emptyCartNotification) {
+        emptyCartNotification = document.createElement('div');
+        emptyCartNotification.id = 'empty-cart-notification';
+        emptyCartNotification.textContent = 'Tambahkan item terlebih dahulu ke keranjang';
+        emptyCartNotification.style.color = 'red';
+        emptyCartNotification.style.marginBottom = '10px'; // Menambahkan margin bawah
+        cartActions.insertBefore(emptyCartNotification, cartActions.firstChild);
+    }
+}
+
+function hideEmptyCartNotification() {
+    const emptyCartNotification = document.getElementById('empty-cart-notification');
+    if (emptyCartNotification) {
+        emptyCartNotification.remove();
+    }
+}
+    
+    function continueShopping() {
+        toggleCart();
+        enableButtons();
+    }
+    
+    gemini13NextSlideButton.addEventListener('click', () => {
+        const totalGemini13Slides = gemini13Slides.length;
+        if (currentGemini13Slide < totalGemini13Slides - 1) {
+            setGemini13Slide(currentGemini13Slide + 1, 'right');
+        }
+    });
+    
+    gemini13PrevSlideButton.addEventListener('click', () => {
+        const totalGemini13Slides = gemini13Slides.length;
+        if (currentGemini13Slide > 0) {
+            setGemini13Slide(currentGemini13Slide - 1, 'left');
+        }
+    });
+    
+    function setGemini13Slide(index, direction) {
+        const totalGemini13Slides = gemini13Slides.length;
+        if (index < 0 || index >= totalGemini13Slides) return;
+    
+        const currentCard = gemini13Slides[currentGemini13Slide];
+        const nextCard = gemini13Slides[index];
+    
+        currentCard.classList.remove('active');
+        currentCard.classList.add(direction === 'right' ? 'inactive-left' : 'inactive-right');
+        nextCard.classList.add('active');
+        nextCard.classList.remove(direction === 'right' ? 'inactive-right' : 'inactive-left');
+    
+        currentGemini13Slide = index;
+        updateGemini13NavigationButtons();
+    }
+    
+    function resetGemini13Slides() {
+        gemini13Slides.forEach((slide, index) => {
+            slide.classList.remove('active', 'inactive-left', 'inactive-right');
+            slide.classList.add(index === 0 ? 'active' : 'inactive-right');
+        });
+        currentGemini13Slide = 0;
+        updateGemini13NavigationButtons();
+    }
+    
+    function updateGemini13NavigationButtons() {
+        const totalGemini13Slides = gemini13Slides.length;
+        gemini13PrevSlideButton.style.display = currentGemini13Slide === 0 ? 'none' : 'block';
+        gemini13NextSlideButton.style.display = currentGemini13Slide === totalGemini13Slides - 1 ? 'none' : 'block';
+    }
+    
+    viewTncButton.addEventListener('click', function() {
+        if (currentPopupId) {
+            document.getElementById(currentPopupId).style.display = 'flex';
+        }
+    });
+    
+    popupCloseCancer09.addEventListener('click', function() {
+        popupOverlayCancer09.style.display = 'none';
+    });
+    
+    popupCloseGemini13.addEventListener('click', function() {
+        popupOverlayGemini13.style.display = 'none';
+    });
+    
+    function saveCartToLocalStorage() {
+        const cartData = [];
+        for (let productId in prices) {
+            const productItem = document.querySelector(`.product-item[data-id='${productId}']`);
+            const outlet = productItem ? activeOutlet : ''; // Mendapatkan outlet dari item yang ada
+            cartData.push({
+                id: productId,
+                price: prices[productId],
+                quantity: quantities[productId],
+                outlet: outlet // Simpan outlet di localStorage
+            });
+        }
+        localStorage.setItem('cartData', JSON.stringify(cartData));
+    }
+    
+    function loadCartFromLocalStorage() {
+        const cartData = JSON.parse(localStorage.getItem('cartData')) || [];
+        cartData.forEach(item => {
+            const productItem = document.querySelector(`.product-item[data-id='${item.id}']`);
+            if (productItem) {
+                prices[item.id] = item.price;
+                quantities[item.id] = item.quantity;
+                const outlet = item.outlet;
+
+                const quantityControls = productItem.querySelector('.quantity-controls');
+                const addToCartButton = productItem.querySelector('.add-to-cart');
+                productItem.querySelector('.product-quantity').textContent = item.quantity;
+
+                quantityControls.style.display = 'flex';
+                addToCartButton.style.display = 'none';
+
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.id = `item-${item.id}`;
+                cartItem.innerHTML = `
+                    <img src="${productItem.querySelector('img').src}" alt="${productItem.querySelector('h3').innerText}" class="product-image">
+                    <div class="cart-item-details">
+                        <span>${productItem.querySelector('h3').innerText}</span>
+                        <div class="cart-item-outlet" style="color: grey; margin-top: 2px;">Outlet: ${outlet}</div> <!-- Added margin-top -->
+                    </div>
+                    <div class="cart-item-actions">
+                        <div class="quantity-control">
+                            <button onclick="updateQuantity('${item.id}', -1)" ${item.quantity === 1 ? 'disabled' : ''}>-</button>
+                            <span id="quantity-${item.id}">${item.quantity}</span>
+                            <button onclick="updateQuantity('${item.id}', 1)">+</button>
+                        </div>
+                        <span>Rp ${item.price.toLocaleString('id-ID')}</span>
+                        <button class="remove-button" onclick="removeItem('${item.id}')">
+                            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhexGkgpKZGcj_l2Wt6_R39GOMCBt4XmcJe0MZVg-DL_yN3XabeqgPPr_qRBgCT0z3SpLBSvRkhKi1IC7J3lpjgLXY6PufTDnw07J3IGqEHO_OOH8TpGJY6FOrqhvFC_LRwBZVidlhj-j5I1uwd3lwt3ZiBNjXk-hTG_79cmNlLJ0afHt_cmjXSF-vtNe8/s512/trash-can.png" alt="Remove" class="trash-icon">
+                        </button>
+                    </div>
+                `;
+                cartItems.appendChild(cartItem);
+            }
+        });
+        updateCart();
+    }
+    
+    function updateQuantity(productId, change) {
+        if (!quantities[productId]) return;
+        const productPrice = prices[productId];
+        const newQuantity = quantities[productId] + change;
+    
+        if (newQuantity > 0 && (calculateTotalPrice() + productPrice * change > 50000)) {
+            // Tampilkan notifikasi hanya di dalam cart jika cart sedang aktif
+            if (cartVisible) {
+                showPriceLimitNotification(true);
+            } else {
+                showPriceLimitNotification(false);
+            }
+            return;
+        }
+    
+        if (newQuantity > 0) {
+            quantities[productId] = newQuantity;
+            const quantityElement = document.getElementById(`quantity-${productId}`);
+            quantityElement.innerText = quantities[productId];
+    
+            const cartItem = document.getElementById(`item-${productId}`);
+            if (cartItem) {
+                const decreaseButton = cartItem.querySelector('.quantity-control button:first-child');
+                decreaseButton.disabled = quantities[productId] === 1;
+            }
+    
+            document.querySelector(`.product-item[data-id='${productId}'] .product-quantity`).textContent = quantities[productId];
+            saveCartToLocalStorage();
+            updateCart();
+        }
+    }    
+    
+    function enableButtons() {
+        document.querySelectorAll('.disable-all').forEach(element => {
+            element.classList.remove('disable-all');
+        });
+    }
+    </script>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+    </body>
+    </html>   
