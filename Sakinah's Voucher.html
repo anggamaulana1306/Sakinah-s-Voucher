@@ -8,7 +8,331 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chewy&display=swap">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap">
-<style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+
+        .envelope-section {
+            --theme-blue: #B4D2EE;
+            --theme-blue-dull: #D3EAFD;
+            --theme-white: #FFF;
+            --theme-black: #444;
+            --theme-red: #C51803;
+            --theme-pink: #F18DBC;
+            --theme-pink-dark: #B3176E;
+            --env-width: 150px;
+            --env-height: 100px;
+            --heart-width: 15px;
+            --heart-height: 15px;
+            --unlock-wrapper: 0.4s;
+            --open-close-envelop: calc(var(--unlock-wrapper) + 0.3s);
+            --show-note: calc(var(--unlock-wrapper) + 0.6s);
+            --lock-wrapper: calc(var(--open-close-envelop) + 0.3s);
+            --animation-duration: 0.5s;
+            --card-animation-duration: 1s;
+            position: absolute;
+            bottom: -270px;
+            right: 400px;
+            width: 100px;
+            height: 140px;
+            transition: bottom 0.5s ease-in-out;
+        }
+
+        .envelope-section.visible {
+            bottom: 10px;
+        }
+
+        .envelope-section .envelope-wrapper {
+            background: var(--theme-pink);
+            position: relative;
+        }
+
+        .envelope-section .envelope {
+            position: relative;
+            width: var(--env-width);
+            height: var(--env-height);
+            background-color: var(--theme-pink); /* Menambahkan background color */
+        }
+
+        .envelope-section .envelope::before {
+            content: "";
+            position: absolute;
+            top: 0px;
+            z-index: 2;
+            border-top: calc(var(--env-height) / 2 + 5px) solid var(--theme-pink-dark);
+            border-right: calc(var(--env-width) / 2) solid transparent;
+            border-left: calc(var(--env-width) / 2) solid transparent;
+            transform-origin: top;
+            transition: all var(--animation-duration) ease-in-out var(--open-close-envelop);
+        }
+
+        .envelope-section .envelope::after {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            width: 0px;
+            height: 0px;
+            border-top: calc(var(--env-height) / 2) solid transparent;
+            border-right: calc(var(--env-width) / 2) solid var(--theme-pink);
+            border-bottom: calc(var(--env-height) / 2) solid var(--theme-pink);
+            border-left: calc(var(--env-width) / 2) solid var(--theme-pink);
+        }
+
+        .envelope-section .envelope-card {
+            position: absolute;
+            right: 20%;
+            bottom: 10%;
+            width: 60%;
+            height: 90%;
+            background: var(--theme-white);
+            text-align: center;
+            transition: all var(--card-animation-duration) ease-in-out;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+        }
+
+        .envelope-section .envelope-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-family: "Great Vibes", cursive;
+            color: var(--theme-pink);
+            transform: translate(-50%, -50%);
+        }
+
+        .envelope-section .heart {
+            position: absolute;
+            top: 50%;
+            left: 75.5%;
+            width: var(--heart-width);
+            height: var(--heart-height);
+            background: var(--theme-white);
+            z-index: 4;
+            transform: translate(-50%, -20%) rotate(45deg);
+            transition: transform var(--animation-duration) ease-in-out var(--lock-wrapper);
+            box-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+            cursor: pointer;
+        }
+
+        .envelope-section .heart::before,
+        .envelope-section .heart::after {
+            content: "";
+            position: absolute;
+            width: var(--heart-width);
+            height: var(--heart-width);
+            background-color: var(--theme-white);
+            border-radius: 50%;
+        }
+
+        .envelope-section .heart::before {
+            top: calc(-1 * var(--heart-width) / 2);
+        }
+
+        .envelope-section .heart::after {
+            right: calc(var(--heart-width) / 2);
+        }
+
+        .envelope-section .flap .envelope::before {
+            transform: rotateX(180deg);
+            z-index: 0;
+        }
+
+        .envelope-section .flap .envelope .envelope-card {
+            bottom: 100px;
+            transform: scale(1.5);
+            transition-delay: var(--show-note);
+        }
+
+        .envelope-section .flap .heart {
+            transform: rotate(90deg);
+            transition-delay: var(--unlock-wrapper);
+            pointer-events: none;
+        }
+
+        .envelope-section .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .envelope-section .overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .envelope-section .overlay-content {
+            background: var(--theme-white);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            width: 250px;
+        }
+
+        .envelope-section .overlay-content .close-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .envelope-section .overlay-content .description {
+            margin-bottom: 5px;
+            color: var(--theme-pink);
+            font-family: 'Dancing Script';
+            font-size: large;
+        }
+
+        .envelope-section .overlay-content input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid var(--theme-black);
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .envelope-section .overlay-content button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: var(--theme-pink);
+            color: var(--theme-white);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            box-sizing: border-box;
+        }
+
+        .envelope-section .overlay-content button:hover {
+            background: var(--theme-pink-dark);
+        }
+
+        .envelope-section .loading-animation-container {
+            display: none;
+            margin-top: 10px;
+            width: 100%;
+            height: 10px;
+            background: var(--theme-pink);
+            position: relative;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .envelope-section .loading-animation {
+            height: 100%;
+            background: var(--theme-pink-dark);
+            width: 0;
+            transition: width 2s ease-in-out;
+        }
+
+        .envelope-section .loading-text {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--theme-black);
+            text-align: center;
+        }
+
+        .envelope-section .hidden {
+            display: none;
+        }
+
+        .envelope-section .close-btn {
+            margin-top: 10px;
+            margin-left: 38px;
+            padding: 10px 20px;
+            background: var(--theme-pink);
+            color: var(--theme-white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+
+        .envelope-section .flap + .close-btn {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .envelope-section #text-overlay {
+            visibility: hidden;
+            opacity: 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease-in-out;
+            color: var(--theme-white);
+        }
+
+        .envelope-section #text-overlay.visible {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .envelope-section #paper-content {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: pre-wrap;
+            width: calc(100% - 160px);
+            max-width: calc(100% - 160px);
+            overflow: hidden;
+            box-sizing: border-box;
+            text-align: left;
+            font-family: Arial, sans-serif;
+            font-size: 20px;
+            color: var(--theme-white);
+            margin-top: 35px;
+            margin-left: 80px;
+            margin-right: 80px;
+        }
+
+        .envelope-section #close-text-overlay {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: var(--theme-pink);
+            color: var(--theme-white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease-in-out;
+            z-index: 10;
+        }
+
+        .envelope-section #close-text-overlay:hover {
+            background: var(--theme-pink-dark);
+        }
+
+        .envelope-section .hidden {
+            display: none;
+        }
+
+        .envelope-section #code-feedback {
+            margin-top: 10px;
+        }
     html, body {
         font-family: 'Arial', sans-serif;
         margin: 0;
@@ -2356,7 +2680,41 @@
         </div>
     </div>
 </div>
+    
+<div class="envelope-section hidden">
+    <div class="bg-wrapper">
+        <div class="envelope-wrapper">
+            <div class="envelope">
+                <div class="envelope-card">
+                    <div class="envelope-text">Buka Ucapan</div>
+                </div>
+            </div>
+            <div class="heart"></div>
+        </div>
+        <button class="close-btn">Tutup</button>
+    </div>
 
+    <div class="overlay" id="code-overlay">
+        <div class="overlay-content">
+            <span class="fa fa-close close-icon" id="close-overlay"></span>
+            <p class="description">Masukkan kode untuk lihat ucapan</p>
+            <input type="text" id="code-input" placeholder="Masukkan kode">
+            <button id="submit-code">Submit</button>
+            <div class="loading-animation-container">
+                <div class="loading-animation"></div>
+            </div>
+            <div class="loading-text">Tunggu ya, ucapan sedang diproses...</div>
+            <div id="code-feedback" class="hidden"></div>
+        </div>
+    </div>
+
+    <div class="overlay" id="text-overlay">
+        <div id="paper-content"></div>
+        <button id="close-text-overlay">Close Text</button>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     const voucherCodes = {
         "CANCER09": {
@@ -2412,6 +2770,128 @@
     let currentGemini13Slide = 0;
     let currentPopupId = "";
     let activeOutlet = ""; // Store the active outlet
+    const correctCode = "SKNBARBIE19TH";
+    let textTimeout;
+    
+    function typeText(text) {
+        clearTimeout(textTimeout);
+        let i = 0;
+        const speed = 35;
+        const textElement = $("#paper-content");
+        textElement.html("");
+    
+        function typeWriter() {
+            if (i < text.length) {
+                textElement.append(text.charAt(i));
+                if (text.charAt(i) === '.' || text.charAt(i) === '?') {
+                    textTimeout = setTimeout(typeWriter, speed * 10);
+                } else {
+                    textTimeout = setTimeout(typeWriter, speed);
+                }
+                i++;
+            }
+        }
+        typeWriter();
+    }
+    
+    $(document).ready(() => {
+        const voucherGemini13Redeemed = false; // Ganti dengan logika sebenarnya
+    
+        if (voucherGemini13Redeemed) {
+            $('.envelope-section').removeClass('hidden');
+        }
+    
+        $(".envelope-wrapper .heart").click(() => {
+            $('.envelope-wrapper').addClass('flap');
+            setTimeout(() => {
+                $('.close-btn').addClass('flap');
+            }, 500);
+        });
+    
+        $(".close-btn").click(() => {
+            $('.envelope-wrapper').removeClass('flap');
+            $('.close-btn').removeClass('flap');
+        });
+    
+        $(".envelope-wrapper .envelope-card").click(() => {
+            $('#code-overlay').addClass('visible');
+            $('.envelope-wrapper').addClass('hidden');
+            $('.close-btn').removeClass('flap');
+            $('.close-btn').addClass('hidden'); // Sembunyikan tombol tutup saat kode overlay dibuka
+        });
+    
+        $("#close-overlay").click(() => {
+            $('#code-overlay').removeClass('visible');
+            $('.envelope-wrapper').removeClass('hidden');
+            $('.close-btn').removeClass('hidden'); // Tampilkan kembali tombol tutup saat kode overlay ditutup
+            if ($('.envelope-wrapper').hasClass('flap')) {
+                setTimeout(() => {
+                    $('.close-btn').addClass('flap');
+                }, 500);
+            }
+        });
+    
+        $("#submit-code").click(() => {
+            const inputCode = $("#code-input").val();
+            const feedback = $("#code-feedback");
+            if (inputCode === correctCode) {
+                $('.loading-animation-container').show();
+                $('.loading-animation').css('width', '0');
+                setTimeout(() => {
+                    $('.loading-animation').css('width', '100%');
+                }, 10);
+                $('.loading-text').show();
+                setTimeout(() => {
+                    $('#code-overlay').removeClass('visible');
+                    $('#text-overlay').addClass('visible');
+                    $('.close-btn').addClass('hidden');
+                    typeText("To: Kekasih Tercintaku,\n\n\tSelamat bertambah umur ya cantiku yang ke 19 tahun, seneng banget ga sama kadonya sayang? btw kamu dukun ya bisa tau aku mau beli apa HAHA. Walaupun kamu udah menduga kadonya tapi tetep surprisekan? Mau tau ga, kenapa aku beliin itu semua buat kamu? Yang pertama pastinya itu karena barbie karakter favorit kamu. Terus, aku beli tumblr, tas makeup, penjepit bulu mata, gelang pandora x barbie, gunting kuku, jedai, sisir, lanyard, dan earphone, karena saat liat barang yang aku beli buat kamu, aku keinget hal-hal yang kamu suka. Kamu suka minum es, tumblr cocok buat kamu pergi dan kuliah kalau misalkan lagi mau minum yang dingin biar tahan lama.\n\n\tKamu suka make up, tas itu berguna buat simpen alat-alat make up kamu, kamu suka kalau bulu mata kamu on point, jadi aku beliin penjepitnya juga, kamu lagi suka ngeliatin rambut kamu yang tumbuh panjang, aku beliin jedai dan sisir biar kamu makin semangat rawat rambutnya, kamu suka liat gelang pandora waktu di alfamart unas, aku beliin kamu yang barbie supaya kamu makin suka sama gelangnya, kamu pernah bilang mau earphone barbie tapi belum keluar jadi aku beliin earphone yang ini dulu ya supaya mengobati rasa keinginan kamu punya earphone yang wireless.\n\n\tSelain itu, aku beliin kamu lanyard karena biar kamu makin rajin dan semangat organisasinya, kalo lagi cape di GI terus liat lanyardnya jadi senyum lagi yakan? karena selucu itu dan pastinya jadi inget aku juga dong, dibawa terus ya sayang kalo lagi ada kegiatan organisasi. Terakhir aku beliin kamu gunting kuku karena biar kuku kamu makin cantik dirawat terus (sebenernya ini karena bentuknya mini dan lucu aja sih aku beli karena kamu suka barang mini HAHA). Jaga dengan sangat baik semua ini ya sayang, karena aku dapatin ini juga butuh waktu dan usaha, aku hampir ga yakin buat bisa beliin ini semua, tapi kalo niatnya mau senengin kamu pasti ada aja ya rezekinya, alhamdulillah. mudah-mudahan kamu suka ya sama semua barangnya, beli lemari pajangan juga gapapa sayang biar kamar kamu makin cantik kaya orangnya, btw jumlah kadonya 9 karena biar sesuai sama tanggal ulang tahun kamu.\n\n\t Akhir kata, semangat terus sayangku, hidup itu pasti ga selamanya bahagia dan senang aja cintaku, kadang ada saat bahagia seperti ini dan saat kamu merasa sedih, lelah, dan ga mood dengan keadaan yang lagi kamu rasain. Ngeluh gapapa, cape gapapa, mau nangis juga gapapa, semua itu wajar buat menghilangkan perasaan sedih kamu, tapi yang penting asal kamu jangan berhenti berusaha ya sayang. Aku bangga banget sama kamu udah seberkembang ini dari umur kamu sebelumnya di ulang tahun kamu kemarin, kamu jauh lebih dewasa, tambah pinter, dan tentunya tambah cantik. kalo hari kamu lagi badmood, liat ini aja dan barang barbie dari aku, biar kamu bisa senyum lagi. i love you eternity 💖.\n\nForever yours,\n\nYour Prince");
+                    $('.loading-animation-container').hide();
+                    $('.loading-animation').css('width', '0');
+                    $('.loading-text').hide();
+                }, 2000);
+            } else {
+                feedback.removeClass('hidden').text('Kode salah, coba lagi!').css('color', 'red');
+                setTimeout(() => feedback.addClass('hidden'), 3000);
+            }
+        });
+    
+        $("#close-text-overlay").click(() => {
+            $('#text-overlay').removeClass('visible');
+            $('#paper-content').html("");
+            clearTimeout(textTimeout);
+            $('.envelope-wrapper').removeClass('hidden');
+            $('.close-btn').removeClass('hidden');
+            if ($('.envelope-wrapper').hasClass('flap')) {
+                setTimeout(() => {
+                    $('.close-btn').addClass('flap');
+                }, 500);
+            }
+        });
+    });
+    
+    function showEnvelopeAfterRedeem() {
+        if (voucherCodes["GEMINI13"]) {
+            $('.envelope-section').removeClass('hidden');
+            $('html, body').animate({
+                scrollTop: $("#maps-container").offset().top + $("#maps-container").height()
+            }, 1000);
+        }
+    }
+    
+    function showEnvelopeAnimation() {
+        const envelopeSection = document.querySelector('.envelope-section');
+        if (envelopeSection) {
+            envelopeSection.classList.add('visible');
+        }
+    }
+    
+    function hideEnvelopeAnimation() {
+        const envelopeSection = document.querySelector('.envelope-section');
+        if (envelopeSection) {
+            envelopeSection.classList.remove('visible');
+        }
+    }
     
     voucherInput.addEventListener('keyup', function(e) {
         if (e.key === 'Enter' && voucherInput.value.trim() !== "") {
@@ -2497,6 +2977,9 @@
                 document.getElementById('voucher-image-coupon-cancer09').classList.add('coupon-cancer09');
                 document.getElementById('maps-container').style.display = 'none';
                 successMessage.classList.add('success-message-cancer09');
+                
+                // Hide the envelope animation for CANCER09
+                hideEnvelopeAnimation();
             } else if (voucher.popupId === 'popup-overlay-gemini13') {
                 document.getElementById('voucher-image-coupon-gemini13').style.display = 'flex';
                 document.getElementById('voucher-image-coupon-gemini13').classList.add('coupon-gemini13');
@@ -2505,6 +2988,9 @@
                 resetGemini13Slides();
                 updateGemini13NavigationButtons();
                 successMessage.classList.add('success-message-gemini13');
+                
+                // Show the envelope animation for GEMINI13
+                showEnvelopeAnimation();
             }
         }
     
