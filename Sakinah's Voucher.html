@@ -162,6 +162,7 @@
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s ease-in-out;
+            z-index: 9999; /* High z-index to cover other elements */;
         }
 
         .envelope-section .overlay.visible {
@@ -3644,19 +3645,27 @@ function hideEmptyCartNotification() {
     }
     
     function resetGemini13Slides() {
-        gemini13Slides.forEach((slide, index) => {
-            slide.classList.remove('active', 'inactive-left', 'inactive-right');
-            slide.classList.add(index === 0 ? 'active' : 'inactive-right');
-        });
-        currentGemini13Slide = 0;
-        updateGemini13NavigationButtons();
-    }
-    
+    Array.from(gemini13Slides).forEach((slide, index) => {
+        slide.classList.remove('active', 'inactive-left', 'inactive-right');
+        slide.classList.add(index === 0 ? 'active' : 'inactive-right');
+    });
+    currentGemini13Slide = 0;
+    updateGemini13NavigationButtons();
+}
+
     function updateGemini13NavigationButtons() {
-        const totalGemini13Slides = gemini13Slides.length;
-        gemini13PrevSlideButton.style.display = currentGemini13Slide === 0 ? 'none' : 'block';
-        gemini13NextSlideButton.style.display = currentGemini13Slide === totalGemini13Slides - 1 ? 'none' : 'block';
+    const totalSlides = gemini13Slides.length;
+    if (currentGemini13Slide === 0) {
+        gemini13PrevSlideButton.style.display = 'none';
+        gemini13NextSlideButton.style.display = 'block';
+    } else if (currentGemini13Slide === totalSlides - 1) {
+        gemini13NextSlideButton.style.display = 'none';
+        gemini13PrevSlideButton.style.display = 'block';
+    } else {
+        gemini13PrevSlideButton.style.display = 'block';
+        gemini13NextSlideButton.style.display = 'block';
     }
+}
     
     viewTncButton.addEventListener('click', function() {
         if (currentPopupId) {
