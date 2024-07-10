@@ -298,7 +298,8 @@
             white-space: pre-wrap;
             width: calc(100% - 160px);
             max-width: calc(100% - 160px);
-            overflow: hidden;
+            overflow-y: auto; /* Enable vertical scrollbar */
+            max-height: 80vh; /* Set maximum height for scrolling */
             box-sizing: border-box;
             text-align: left;
             font-family: Arial, sans-serif;
